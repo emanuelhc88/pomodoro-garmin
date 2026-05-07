@@ -6,6 +6,8 @@ class TomaApp extends App.AppBase {
     private var _model as PomodoroModel;
     private var _timerService as TimerService;
     private var _attentionService as AttentionService;
+    private var _lastPreset as Preset or Null;
+    private var _skipNextPhaseChange as Lang.Boolean = false;
 
     function initialize() {
         AppBase.initialize();
@@ -26,6 +28,8 @@ class TomaApp extends App.AppBase {
     }
 
     function startSession(preset as Preset) as Void {
+        _lastPreset = preset;
+        _skipNextPhaseChange = true;
         _model.start(preset);
         _timerService.start(method(:onTimerTick), 1000);
     }
@@ -57,12 +61,22 @@ class TomaApp extends App.AppBase {
         if (event == PomodoroEvent.ON_START) {
             _attentionService.alertStart();
         } else if (event == PomodoroEvent.ON_PHASE_CHANGE) {
+            if (_skipNextPhaseChange) {
+                _skipNextPhaseChange = false;
+                return;
+            }
             var state = _model.getState();
+            if (state == PomodoroState.COMPLETED) {
+                return;
+            }
             if (state == PomodoroState.RUNNING_SHORT_BREAK || state == PomodoroState.RUNNING_LONG_BREAK) {
                 _attentionService.alertEndOfWork();
             } else if (state == PomodoroState.RUNNING_WORK) {
                 _attentionService.alertEndOfBreak();
             }
+            var phase = _stateToTransitionPhase(state);
+            var view = new PhaseTransitionView(phase, _model.getCurrentCycle(), _model.getTotalCycles());
+            Ui.pushView(view, new PhaseTransitionDelegate(view), Ui.SLIDE_LEFT);
         } else if (event == PomodoroEvent.ON_COMPLETE) {
             _attentionService.alertCycleComplete();
             _timerService.stop();
@@ -71,5 +85,15 @@ class TomaApp extends App.AppBase {
             delegate.setView(view);
             Ui.switchToView(view, delegate, Ui.SLIDE_LEFT);
         }
+    }
+
+    private function _stateToTransitionPhase(state as Lang.Number) as Lang.Symbol {
+        if (state == PomodoroState.RUNNING_WORK) { return :focus; }
+        if (state == PomodoroState.RUNNING_SHORT_BREAK) { return :break; }
+        return :long_break;
+    }
+
+    function getLastPreset() as Preset or Null {
+        return _lastPreset;
     }
 }

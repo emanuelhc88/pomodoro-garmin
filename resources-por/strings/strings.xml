@@ -38,4 +38,7 @@
     <string id="about_tagline">Pomodoro para devs</string>
     <string id="about_version">v1.0.0</string>
     <string id="about_credits">Feito com foco</string>
+    <string id="confirm_stop_title">Parar sessao?</string>
+    <string id="confirm_stop_stop">Parar</string>
+    <string id="confirm_stop_continue">Continuar</string>
 </resources>

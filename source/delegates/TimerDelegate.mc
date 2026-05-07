@@ -8,9 +8,8 @@ class TimerDelegate extends Ui.BehaviorDelegate {
     }
 
     function onBack() as Lang.Boolean {
-        var app = App.getApp() as TomaApp;
-        app.stopSession();
-        Ui.popView(Ui.SLIDE_RIGHT);
+        var view = new ConfirmStopView();
+        Ui.pushView(view, new ConfirmStopDelegate(view), Ui.SLIDE_UP);
         return true;
     }
 

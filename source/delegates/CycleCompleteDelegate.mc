@@ -1,5 +1,5 @@
+using Toybox.Application as App;
 using Toybox.WatchUi as Ui;
-using Toybox.System as Sys;
 using Toybox.Lang;
 
 class CycleCompleteDelegate extends Ui.BehaviorDelegate {
@@ -31,17 +31,28 @@ class CycleCompleteDelegate extends Ui.BehaviorDelegate {
         if (_view != null) {
             var idx = _view.getFocusIdx();
             if (idx == 0) {
-                Sys.println("Start again pressed");
+                var app = App.getApp() as TomaApp;
+                var preset = app.getLastPreset();
+                if (preset != null) {
+                    app.startSession(preset);
+                    Ui.switchToView(new TimerView(app.getModel()), new TimerDelegate(), Ui.SLIDE_LEFT);
+                } else {
+                    _navigateHome();
+                }
             } else {
-                Sys.println("Done pressed");
+                _navigateHome();
             }
         }
-        Ui.popView(Ui.SLIDE_RIGHT);
         return true;
     }
 
     function onBack() as Lang.Boolean {
-        Ui.popView(Ui.SLIDE_RIGHT);
+        _navigateHome();
         return true;
+    }
+
+    private function _navigateHome() as Void {
+        var view = new HomeView();
+        Ui.switchToView(view, new HomeDelegate(view), Ui.SLIDE_RIGHT);
     }
 }

@@ -230,4 +230,46 @@ module Dimensions {
         if (bucket == :large) { return 300; }
         return 180;
     }
+
+    function confirmDialogWidth(bucket as Lang.Symbol) as Lang.Number {
+        if (bucket == :small) { return 160; }
+        if (bucket == :large) { return 280; }
+        return 200;
+    }
+
+    function confirmDialogHeight(bucket as Lang.Symbol) as Lang.Number {
+        if (bucket == :small) { return 110; }
+        if (bucket == :large) { return 180; }
+        return 130;
+    }
+
+    function confirmTitleY(bucket as Lang.Symbol) as Lang.Number {
+        if (bucket == :small) { return 15; }
+        if (bucket == :large) { return 30; }
+        return 20;
+    }
+
+    function confirmButton1Y(bucket as Lang.Symbol) as Lang.Number {
+        if (bucket == :small) { return 50; }
+        if (bucket == :large) { return 85; }
+        return 60;
+    }
+
+    function confirmButton2Y(bucket as Lang.Symbol) as Lang.Number {
+        if (bucket == :small) { return 76; }
+        if (bucket == :large) { return 130; }
+        return 92;
+    }
+
+    function confirmButtonWidth(bucket as Lang.Symbol) as Lang.Number {
+        if (bucket == :small) { return 120; }
+        if (bucket == :large) { return 210; }
+        return 150;
+    }
+
+    function confirmButtonHeight(bucket as Lang.Symbol) as Lang.Number {
+        if (bucket == :small) { return 22; }
+        if (bucket == :large) { return 38; }
+        return 26;
+    }
 }
