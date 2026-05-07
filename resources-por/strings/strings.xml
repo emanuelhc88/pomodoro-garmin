@@ -1,5 +1,27 @@
 <resources>
     <string id="app_name">Toma</string>
     <string id="preset_cycles">%d ciclos</string>
+    <string id="unit_cycles">ciclos</string>
+    <string id="preset_custom_label">PERSONALIZADO</string>
     <string id="settings_label">Configurações</string>
+    <string id="phase_focus">FOCO</string>
+    <string id="phase_break">PAUSA</string>
+    <string id="phase_long_break">PAUSA LONGA</string>
+    <string id="state_paused">PAUSADO</string>
+    <string id="cycle_complete_title">CICLO COMPLETO</string>
+    <string id="session_n_of_m">Sessão $1$ de $2$</string>
+    <string id="today_sessions">Hoje: $1$ sessões</string>
+    <string id="start_again">Recomeçar</string>
+    <string id="done">Pronto</string>
+    <string id="custom_builder_title">Personalizado</string>
+    <string id="custom_label_work">FOCO</string>
+    <string id="custom_label_break">PAUSA</string>
+    <string id="custom_label_cycles">CICLOS</string>
+    <string id="unit_min">min</string>
+    <string id="hints_nav">SELECT p/ editar</string>
+    <string id="hints_edit">SELECT p/ confirmar</string>
+    <string id="history_title">HISTORICO</string>
+    <string id="history_empty">Sem sessoes ainda</string>
+    <string id="duration_hours_minutes">$1$h $2$min</string>
+    <string id="duration_minutes">$1$min</string>
 </resources>

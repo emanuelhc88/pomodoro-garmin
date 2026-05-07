@@ -1,8 +1,27 @@
 <resources>
     <string id="app_name">Toma</string>
     <string id="preset_cycles">%d cycles</string>
+    <string id="unit_cycles">cycles</string>
+    <string id="preset_custom_label">CUSTOM</string>
     <string id="settings_label">Settings</string>
     <string id="phase_focus">FOCUS</string>
     <string id="phase_break">BREAK</string>
     <string id="phase_long_break">LONG BREAK</string>
+    <string id="state_paused">PAUSED</string>
+    <string id="cycle_complete_title">CYCLE COMPLETE</string>
+    <string id="session_n_of_m">Session $1$ of $2$</string>
+    <string id="today_sessions">Today: $1$ sessions</string>
+    <string id="start_again">Start again</string>
+    <string id="done">Done</string>
+    <string id="custom_builder_title">Custom</string>
+    <string id="custom_label_work">WORK</string>
+    <string id="custom_label_break">BREAK</string>
+    <string id="custom_label_cycles">CYCLES</string>
+    <string id="unit_min">min</string>
+    <string id="hints_nav">SELECT to edit</string>
+    <string id="hints_edit">SELECT to confirm</string>
+    <string id="history_title">HISTORY</string>
+    <string id="history_empty">No sessions yet</string>
+    <string id="duration_hours_minutes">$1$h $2$m</string>
+    <string id="duration_minutes">$1$m</string>
 </resources>

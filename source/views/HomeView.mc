@@ -4,14 +4,18 @@ using Toybox.Lang;
 
 class HomeView extends Ui.View {
     private var _selectedIndex as Lang.Number = 0;
-    private var _presetLabels as Lang.Array<Lang.String>;
-    private var _presetSublabels as Lang.Array<Lang.String>;
+    private var _presets as Lang.Array<Preset>;
     private var _totalItems as Lang.Number = 5;
+    private var _cyclesLabel as Lang.String;
+    private var _customLabel as Lang.String;
+    private var _settingsLabel as Lang.String;
 
     function initialize() {
         View.initialize();
-        _presetLabels = ["25 / 5", "30 / 5", "50 / 10", "Custom", "Settings"];
-        _presetSublabels = ["4 cycles", "4 cycles", "4 cycles", "25 / 5 · 4", ""];
+        _presets = Presets.builtinList();
+        _cyclesLabel = Ui.loadResource(Rez.Strings.unit_cycles) as Lang.String;
+        _customLabel = Ui.loadResource(Rez.Strings.preset_custom_label) as Lang.String;
+        _settingsLabel = Ui.loadResource(Rez.Strings.settings_label) as Lang.String;
     }
 
     function getSelectedIndex() as Lang.Number {
@@ -48,11 +52,17 @@ class HomeView extends Ui.View {
         Wordmark.draw(dc, centerX, wordmarkY, bucket);
 
         var cardCenterY = h * 47 / 100;
-        var label = _presetLabels[_selectedIndex] as Lang.String;
-        var sublabel = _presetSublabels[_selectedIndex] as Lang.String;
-        PresetCard.draw(dc, centerX, cardCenterY, label, sublabel, true, cw, ch, cr, cb);
+
+        if (_selectedIndex < 4) {
+            var preset = _presets[_selectedIndex] as Preset;
+            var primary = preset.formatPrimary();
+            var secondary = preset.formatSecondary(_cyclesLabel);
+            PresetCard.draw(dc, centerX, cardCenterY, primary, secondary, true, preset.isCustom, _customLabel, cw, ch, cr, cb, bucket);
+        } else {
+            PresetCard.draw(dc, centerX, cardCenterY, _settingsLabel, "", true, false, "", cw, ch, cr, cb, bucket);
+        }
 
         var dotsY = h * 78 / 100;
-        DotsIndicator.draw(dc, centerX, dotsY, _totalItems, _selectedIndex, dr, ds);
+        DotsIndicator.draw(dc, centerX, dotsY, _totalItems, _selectedIndex, dr, ds, 4);
     }
 }

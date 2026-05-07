@@ -9,7 +9,8 @@ module DotsIndicator {
         total as Lang.Number,
         activeIndex as Lang.Number,
         dotRadius as Lang.Number,
-        dotSpacing as Lang.Number
+        dotSpacing as Lang.Number,
+        settingsIndex as Lang.Number
     ) as Void {
         var totalWidth = (total - 1) * (dotRadius * 2 + dotSpacing);
         var startX = centerX - totalWidth / 2;
@@ -18,10 +19,15 @@ module DotsIndicator {
             var dotX = startX + i * (dotRadius * 2 + dotSpacing);
             if (i == activeIndex) {
                 dc.setColor(Colors.ACCENT, Gfx.COLOR_TRANSPARENT);
+                dc.fillCircle(dotX, y, dotRadius);
+            } else if (i == settingsIndex) {
+                dc.setColor(Colors.BORDER, Gfx.COLOR_TRANSPARENT);
+                dc.setPenWidth(1);
+                dc.drawCircle(dotX, y, dotRadius);
             } else {
                 dc.setColor(Colors.BORDER, Gfx.COLOR_TRANSPARENT);
+                dc.fillCircle(dotX, y, dotRadius);
             }
-            dc.fillCircle(dotX, y, dotRadius);
         }
     }
 }

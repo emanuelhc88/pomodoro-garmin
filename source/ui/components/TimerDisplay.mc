@@ -7,7 +7,8 @@ module TimerDisplay {
         centerX as Lang.Number,
         centerY as Lang.Number,
         remainingSeconds as Lang.Number,
-        bucket as Lang.Symbol
+        bucket as Lang.Symbol,
+        color as Lang.Number
     ) as Void {
         var minutes = remainingSeconds / 60;
         var seconds = remainingSeconds % 60;
@@ -17,7 +18,7 @@ module TimerDisplay {
         var fontHeight = Gfx.getFontHeight(font);
         var y = centerY - fontHeight / 2;
 
-        dc.setColor(Colors.TEXT_PRIMARY, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(color, Gfx.COLOR_TRANSPARENT);
         dc.drawText(centerX, y, font, text, Gfx.TEXT_JUSTIFY_CENTER);
     }
 }

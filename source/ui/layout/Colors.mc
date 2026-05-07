@@ -5,4 +5,8 @@ module Colors {
     const TEXT_PRIMARY = 0xF5F0EB;
     const TEXT_MUTED = 0x888888;
     const BORDER = 0x2A2A2A;
+
+    const BRAND_DIM = 0x6E2017;
+    const ACCENT_DIM = 0x803624;
+    const TEXT_MUTED_DIM = 0x444444;
 }
