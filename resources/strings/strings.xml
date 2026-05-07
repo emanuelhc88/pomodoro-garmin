@@ -1,0 +1,5 @@
+<resources>
+    <string id="app_name">Toma</string>
+    <string id="preset_cycles">%d cycles</string>
+    <string id="settings_label">Settings</string>
+</resources>

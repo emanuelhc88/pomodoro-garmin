@@ -1,0 +1,5 @@
+<resources>
+    <string id="app_name">Toma</string>
+    <string id="preset_cycles">%d ciclos</string>
+    <string id="settings_label">Configurações</string>
+</resources>

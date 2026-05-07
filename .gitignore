@@ -1,0 +1,26 @@
+# Garmin Connect IQ build artifacts
+*.prg
+*.iq
+*.debug.xml
+*.barrel
+bin/
+build/
+
+# Developer key — NEVER commit
+developer_key
+developer_key.der
+*.der
+*.pem
+.connect-iq/
+
+# IDE
+.vscode/.workspaceStorage/
+.idea/
+*.swp
+
+# macOS
+.DS_Store
+
+# Local environment
+.env
+.env.local

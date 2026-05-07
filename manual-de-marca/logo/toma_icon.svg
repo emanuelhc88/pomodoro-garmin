@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Talo -->
+  <path d="M32 18 L32 12" stroke="#2ECC71" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M27 15 Q32 9 37 15" stroke="#2ECC71" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+  <!-- Corpo -->
+  <circle cx="32" cy="38" r="20" fill="#E8432D"/>
+</svg>

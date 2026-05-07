@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run on Forerunner 255",
+      "type": "monkeyc",
+      "request": "launch",
+      "deviceId": "fr255",
+      "program": "${workspaceFolder}/source/TomaApp.mc"
+    },
+    {
+      "name": "Run on Forerunner 255S",
+      "type": "monkeyc",
+      "request": "launch",
+      "deviceId": "fr255s",
+      "program": "${workspaceFolder}/source/TomaApp.mc"
+    },
+    {
+      "name": "Run on Forerunner 265",
+      "type": "monkeyc",
+      "request": "launch",
+      "deviceId": "fr265",
+      "program": "${workspaceFolder}/source/TomaApp.mc"
+    }
+  ]
+}
