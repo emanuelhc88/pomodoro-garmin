@@ -24,4 +24,18 @@
     <string id="history_empty">Sem sessoes ainda</string>
     <string id="duration_hours_minutes">$1$h $2$min</string>
     <string id="duration_minutes">$1$min</string>
+    <string id="settings_title">Ajustes</string>
+    <string id="settings_sound">Som</string>
+    <string id="settings_vibration">Vibracao</string>
+    <string id="settings_backlight">Iluminacao no alerta</string>
+    <string id="settings_record_activity">Gravar como atividade</string>
+    <string id="settings_language">Idioma</string>
+    <string id="settings_history">Historico</string>
+    <string id="settings_about">Sobre</string>
+    <string id="language_auto">Auto</string>
+    <string id="language_en">Ingles</string>
+    <string id="language_pt">Portugues</string>
+    <string id="about_tagline">Pomodoro para devs</string>
+    <string id="about_version">v1.0.0</string>
+    <string id="about_credits">Feito com foco</string>
 </resources>

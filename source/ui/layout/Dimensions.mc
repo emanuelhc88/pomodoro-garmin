@@ -206,4 +206,28 @@ module Dimensions {
         if (bucket == :large) { return 50; }
         return 36;
     }
+
+    function aboutWordmarkY(bucket as Lang.Symbol) as Lang.Number {
+        if (bucket == :small) { return 30; }
+        if (bucket == :large) { return 70; }
+        return 45;
+    }
+
+    function aboutVersionY(bucket as Lang.Symbol) as Lang.Number {
+        if (bucket == :small) { return 75; }
+        if (bucket == :large) { return 165; }
+        return 105;
+    }
+
+    function aboutTaglineY(bucket as Lang.Symbol) as Lang.Number {
+        if (bucket == :small) { return 100; }
+        if (bucket == :large) { return 215; }
+        return 135;
+    }
+
+    function aboutCreditsY(bucket as Lang.Symbol) as Lang.Number {
+        if (bucket == :small) { return 140; }
+        if (bucket == :large) { return 300; }
+        return 180;
+    }
 }

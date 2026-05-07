@@ -31,8 +31,7 @@ class HomeDelegate extends Ui.BehaviorDelegate {
         }
 
         if (selectedIndex == 4) {
-            var view = new HistoryView();
-            Ui.pushView(view, new HistoryDelegate(view), Ui.SLIDE_LEFT);
+            Ui.pushView(new SettingsMenu(), new SettingsMenuDelegate(), Ui.SLIDE_LEFT);
             return true;
         }
 
@@ -72,7 +71,7 @@ class HomeDelegate extends Ui.BehaviorDelegate {
     }
 
     function onMenu() as Lang.Boolean {
-        Sys.println("Menu pressed");
+        Ui.pushView(new SettingsMenu(), new SettingsMenuDelegate(), Ui.SLIDE_UP);
         return true;
     }
 }

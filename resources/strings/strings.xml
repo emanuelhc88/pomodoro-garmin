@@ -24,4 +24,18 @@
     <string id="history_empty">No sessions yet</string>
     <string id="duration_hours_minutes">$1$h $2$m</string>
     <string id="duration_minutes">$1$m</string>
+    <string id="settings_title">Settings</string>
+    <string id="settings_sound">Sound</string>
+    <string id="settings_vibration">Vibration</string>
+    <string id="settings_backlight">Backlight on alert</string>
+    <string id="settings_record_activity">Record as activity</string>
+    <string id="settings_language">Language</string>
+    <string id="settings_history">History</string>
+    <string id="settings_about">About</string>
+    <string id="language_auto">Auto</string>
+    <string id="language_en">English</string>
+    <string id="language_pt">Portugues</string>
+    <string id="about_tagline">Pomodoro for developers</string>
+    <string id="about_version">v1.0.0</string>
+    <string id="about_credits">Made with focus</string>
 </resources>
