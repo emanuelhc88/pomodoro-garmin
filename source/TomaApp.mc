@@ -5,11 +5,13 @@ using Toybox.Lang;
 class TomaApp extends App.AppBase {
     private var _model as PomodoroModel;
     private var _timerService as TimerService;
+    private var _attentionService as AttentionService;
 
     function initialize() {
         AppBase.initialize();
         _model = new PomodoroModel();
         _timerService = new TimerService();
+        _attentionService = new AttentionService();
         _model.addObserver(method(:onModelEvent));
     }
 
@@ -52,7 +54,17 @@ class TomaApp extends App.AppBase {
     }
 
     function onModelEvent(event as Lang.Number) as Void {
-        if (event == PomodoroEvent.ON_COMPLETE) {
+        if (event == PomodoroEvent.ON_START) {
+            _attentionService.alertStart();
+        } else if (event == PomodoroEvent.ON_PHASE_CHANGE) {
+            var state = _model.getState();
+            if (state == PomodoroState.RUNNING_SHORT_BREAK || state == PomodoroState.RUNNING_LONG_BREAK) {
+                _attentionService.alertEndOfWork();
+            } else if (state == PomodoroState.RUNNING_WORK) {
+                _attentionService.alertEndOfBreak();
+            }
+        } else if (event == PomodoroEvent.ON_COMPLETE) {
+            _attentionService.alertCycleComplete();
             _timerService.stop();
             var view = new CycleCompleteView(_model.getCyclesCompleted(), _model.getTotalCycles(), 0);
             var delegate = new CycleCompleteDelegate();
