@@ -3,29 +3,12 @@ using Toybox.WatchUi as Ui;
 using Toybox.Lang;
 
 class TimerView extends Ui.View {
-    private var _phase as Lang.Symbol;
-    private var _remaining as Lang.Number;
-    private var _total as Lang.Number;
-    private var _completedCycles as Lang.Number;
-    private var _totalCycles as Lang.Number;
-    private var _isPaused as Lang.Boolean;
+    private var _model as PomodoroModel;
     private var _pausedText as Lang.String;
 
-    function initialize(
-        phase as Lang.Symbol,
-        remaining as Lang.Number,
-        total as Lang.Number,
-        completedCycles as Lang.Number,
-        totalCycles as Lang.Number,
-        isPaused as Lang.Boolean
-    ) {
+    function initialize(model as PomodoroModel) {
         View.initialize();
-        _phase = phase;
-        _remaining = remaining;
-        _total = total;
-        _completedCycles = completedCycles;
-        _totalCycles = totalCycles;
-        _isPaused = isPaused;
+        _model = model;
         _pausedText = Ui.loadResource(Rez.Strings.state_paused) as Lang.String;
     }
 
@@ -46,20 +29,26 @@ class TimerView extends Ui.View {
         var pSize = Dimensions.pillSize(bucket);
         var pSpacing = Dimensions.pillSpacing(bucket);
 
-        var ringColor = _isPaused ? getDimColor() : getPhaseColor();
-        var displayColor = _isPaused ? Colors.TEXT_MUTED : Colors.TEXT_PRIMARY;
-        var labelColor = _isPaused ? Colors.TEXT_MUTED : getPhaseColor();
-        var phaseText = getPhaseText();
-        var progress = (_total - _remaining).toFloat() / _total.toFloat();
+        var state = _model.getState();
+        var remaining = _model.getRemainingSeconds();
+        var total = _model.getTotalPhaseSeconds();
+        var isPaused = _model.isPaused();
+        var phase = _stateToPhase(state);
+
+        var ringColor = isPaused ? _getDimColor(phase) : _getPhaseColor(phase);
+        var displayColor = isPaused ? Colors.TEXT_MUTED : Colors.TEXT_PRIMARY;
+        var labelColor = isPaused ? Colors.TEXT_MUTED : _getPhaseColor(phase);
+        var phaseText = _getPhaseText(phase);
+        var progress = (total > 0) ? (total - remaining).toFloat() / total.toFloat() : 0.0;
 
         var labelY = centerY + labelOffsetY;
         PhaseLabel.draw(dc, centerX, labelY, phaseText, labelColor, bucket);
 
         TimerRing.draw(dc, centerX, centerY, radius, stroke, progress, ringColor);
 
-        TimerDisplay.draw(dc, centerX, centerY, _remaining, bucket, displayColor);
+        TimerDisplay.draw(dc, centerX, centerY, remaining, bucket, displayColor);
 
-        if (_isPaused) {
+        if (isPaused) {
             var pausedY = centerY + Dimensions.pausedLabelOffsetY(bucket);
             var font = (bucket == :small) ? Gfx.FONT_XTINY : Gfx.FONT_TINY;
             dc.setColor(Colors.TEXT_MUTED, Gfx.COLOR_TRANSPARENT);
@@ -67,24 +56,39 @@ class TimerView extends Ui.View {
         }
 
         var pillsY = centerY + pOffsetY;
-        SessionPills.draw(dc, centerX, pillsY, _totalCycles, _completedCycles, pSize, pSpacing);
+        SessionPills.draw(dc, centerX, pillsY, _model.getTotalCycles(), _model.getCyclesCompleted(), pSize, pSpacing);
     }
 
-    private function getPhaseColor() as Lang.Number {
-        if (_phase == :running_work) { return Colors.BRAND; }
-        if (_phase == :running_short_break) { return Colors.TEXT_MUTED; }
+    private function _stateToPhase(state as Lang.Number) as Lang.Symbol {
+        if (state == PomodoroState.RUNNING_WORK) { return :running_work; }
+        if (state == PomodoroState.RUNNING_SHORT_BREAK) { return :running_short_break; }
+        if (state == PomodoroState.RUNNING_LONG_BREAK) { return :running_long_break; }
+        if (state == PomodoroState.PAUSED) {
+            var model = _model;
+            var cycles = model.getCyclesCompleted();
+            var total = model.getTotalCycles();
+            if (cycles >= total) { return :running_long_break; }
+            if (model.getCurrentCycle() > cycles) { return :running_work; }
+            return :running_short_break;
+        }
+        return :running_work;
+    }
+
+    private function _getPhaseColor(phase as Lang.Symbol) as Lang.Number {
+        if (phase == :running_work) { return Colors.BRAND; }
+        if (phase == :running_short_break) { return Colors.TEXT_MUTED; }
         return Colors.ACCENT;
     }
 
-    private function getDimColor() as Lang.Number {
-        if (_phase == :running_work) { return Colors.BRAND_DIM; }
-        if (_phase == :running_short_break) { return Colors.TEXT_MUTED_DIM; }
+    private function _getDimColor(phase as Lang.Symbol) as Lang.Number {
+        if (phase == :running_work) { return Colors.BRAND_DIM; }
+        if (phase == :running_short_break) { return Colors.TEXT_MUTED_DIM; }
         return Colors.ACCENT_DIM;
     }
 
-    private function getPhaseText() as Lang.String {
-        if (_phase == :running_work) { return "FOCUS"; }
-        if (_phase == :running_short_break) { return "BREAK"; }
+    private function _getPhaseText(phase as Lang.Symbol) as Lang.String {
+        if (phase == :running_work) { return "FOCUS"; }
+        if (phase == :running_short_break) { return "BREAK"; }
         return "LONG BREAK";
     }
 }

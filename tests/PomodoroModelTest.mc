@@ -289,6 +289,57 @@ function testTotalPhaseSecondsUpdates(logger as Test.Logger) as Lang.Boolean {
     return true;
 }
 
+(:test)
+function testTickBatchFastCycle(logger as Test.Logger) as Lang.Boolean {
+    var model = new PomodoroModel();
+    var preset = new Preset(1, 1, 2, false);
+    model.start(preset);
+    // Cycle 1: work(60s) + short break(60s)
+    for (var i = 0; i < 120; i++) { model.tick(); }
+    Test.assertEqualMessage(PomodoroState.RUNNING_WORK, model.getState(), "After cycle 1, should be in WORK again");
+    Test.assertEqualMessage(2, model.getCurrentCycle(), "Should be cycle 2");
+    // Cycle 2: work(60s) → long break(180s) → completed
+    for (var i = 0; i < 60; i++) { model.tick(); }
+    Test.assertEqualMessage(PomodoroState.RUNNING_LONG_BREAK, model.getState(), "After cycle 2 work, should be LONG_BREAK");
+    for (var i = 0; i < 180; i++) { model.tick(); }
+    Test.assertEqualMessage(PomodoroState.COMPLETED, model.getState(), "After long break, should be COMPLETED");
+    return true;
+}
+
+(:test)
+function testTickBatchDuringPauseIsNoop(logger as Test.Logger) as Lang.Boolean {
+    var model = new PomodoroModel();
+    model.start(new Preset(25, 5, 4, false));
+    model.tick(); // remaining = 1499
+    model.pause();
+    for (var i = 0; i < 100; i++) { model.tick(); }
+    Test.assertEqualMessage(1499, model.getRemainingSeconds(), "100 ticks during pause should not change remaining");
+    model.resume();
+    model.tick();
+    Test.assertEqualMessage(1498, model.getRemainingSeconds(), "After resume, tick should decrement again");
+    return true;
+}
+
+(:test)
+function testOnCompleteEventFired(logger as Test.Logger) as Lang.Boolean {
+    var model = new PomodoroModel();
+    var tracker = new EventTracker();
+    model.addObserver(tracker.method(:onEvent));
+    var preset = new Preset(1, 1, 1, false);
+    model.start(preset);
+    // Single cycle: 60 ticks → COMPLETED
+    for (var i = 0; i < 60; i++) { model.tick(); }
+    var foundComplete = false;
+    for (var i = 0; i < tracker.events.size(); i++) {
+        if (tracker.events[i] == PomodoroEvent.ON_COMPLETE) {
+            foundComplete = true;
+        }
+    }
+    Test.assert(foundComplete);
+    Test.assertEqualMessage(PomodoroState.COMPLETED, model.getState(), "Should be COMPLETED");
+    return true;
+}
+
 // --- Helper class for observer testing ---
 class EventTracker {
     var events as Lang.Array<Lang.Number> = [] as Lang.Array<Lang.Number>;
