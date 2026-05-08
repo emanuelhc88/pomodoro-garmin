@@ -147,7 +147,7 @@ class PomodoroModel {
                     _emit(PomodoroEvent.ON_COMPLETE);
                 } else {
                     _state = PomodoroState.RUNNING_LONG_BREAK;
-                    _remainingSeconds = preset.breakMin * 3 * 60;
+                    _remainingSeconds = preset.getLongBreakSeconds();
                     _totalPhaseSeconds = _remainingSeconds;
                     _emit(PomodoroEvent.ON_PHASE_CHANGE);
                 }

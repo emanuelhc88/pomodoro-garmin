@@ -1,3 +1,4 @@
+using Toybox.Application as App;
 using Toybox.WatchUi as Ui;
 using Toybox.Lang;
 
@@ -40,6 +41,8 @@ class CustomBuilderDelegate extends Ui.BehaviorDelegate {
         if (_view.isEditing()) {
             _view.cancelEdit();
         } else {
+            var app = App.getApp() as TomaApp;
+            app.setCustomPreset(_view.buildPreset());
             Ui.popView(Ui.SLIDE_RIGHT);
         }
         return true;

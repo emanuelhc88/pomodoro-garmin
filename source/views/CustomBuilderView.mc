@@ -145,4 +145,8 @@ class CustomBuilderView extends Ui.View {
         if (_selectedLine == 1) { return PresetLimits.BREAK_MAX; }
         return PresetLimits.CYCLES_MAX;
     }
+
+    function buildPreset() as Preset {
+        return new Preset(_workMin, _breakMin, _cycles, true);
+    }
 }

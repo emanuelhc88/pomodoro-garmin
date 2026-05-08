@@ -8,6 +8,7 @@ class TomaApp extends App.AppBase {
     private var _attentionService as AttentionService;
     private var _counterRepo as CounterRepository;
     private var _lastPreset as Preset or Null;
+    private var _customPreset as Preset or Null = null;
     private var _skipNextPhaseChange as Lang.Boolean = false;
 
     function initialize() {
@@ -100,5 +101,13 @@ class TomaApp extends App.AppBase {
 
     function getLastPreset() as Preset or Null {
         return _lastPreset;
+    }
+
+    function getCustomPreset() as Preset or Null {
+        return _customPreset;
+    }
+
+    function setCustomPreset(preset as Preset) as Void {
+        _customPreset = preset;
     }
 }

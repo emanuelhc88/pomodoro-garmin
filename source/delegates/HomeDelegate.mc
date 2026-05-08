@@ -24,8 +24,15 @@ class HomeDelegate extends Ui.BehaviorDelegate {
         var selectedIndex = _view.getSelectedIndex();
 
         if (selectedIndex == 3) {
-            var view = new CustomBuilderView();
-            Ui.pushView(view, new CustomBuilderDelegate(view), Ui.SLIDE_LEFT);
+            var app = App.getApp() as TomaApp;
+            var customPreset = app.getCustomPreset();
+            if (customPreset != null) {
+                app.startSession(customPreset);
+                Ui.pushView(new TimerView(app.getModel()), new TimerDelegate(), Ui.SLIDE_LEFT);
+            } else {
+                var view = new CustomBuilderView();
+                Ui.pushView(view, new CustomBuilderDelegate(view), Ui.SLIDE_LEFT);
+            }
             return true;
         }
 

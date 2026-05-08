@@ -32,6 +32,10 @@ class Preset {
     function formatSecondary(cyclesLabel as Lang.String) as Lang.String {
         return Lang.format("$1$ $2$", [cycles, cyclesLabel]);
     }
+
+    function getLongBreakSeconds() as Lang.Number {
+        return breakMin * 60 * 3;
+    }
 }
 
 module Presets {
