@@ -1,5 +1,6 @@
 using Toybox.Application as App;
 using Toybox.WatchUi as Ui;
+using Toybox.Time;
 using Toybox.Lang;
 
 class TomaApp extends App.AppBase {
@@ -7,6 +8,7 @@ class TomaApp extends App.AppBase {
     private var _timerService as TimerService;
     private var _attentionService as AttentionService;
     private var _counterRepo as CounterRepository;
+    private var _historyRepo as HistoryRepository;
     private var _settingsRepo as SettingsRepository;
     private var _presetRepo as PresetRepository;
     private var _recoveryService as RecoveryService;
@@ -22,6 +24,7 @@ class TomaApp extends App.AppBase {
         _recoveryService = new RecoveryService();
         _attentionService = new AttentionService(_settingsRepo);
         _counterRepo = new CounterRepository();
+        _historyRepo = new HistoryRepository();
         _model.addObserver(method(:onModelEvent));
     }
 
@@ -98,6 +101,7 @@ class TomaApp extends App.AppBase {
             _counterRepo.increment();
         } else if (event == PomodoroEvent.ON_COMPLETE) {
             _attentionService.alertCycleComplete();
+            _appendSessionToHistory();
             _timerService.stop();
             _recoveryService.clear();
             var todaySessions = _counterRepo.getTodayCount();
@@ -134,5 +138,28 @@ class TomaApp extends App.AppBase {
         _skipNextPhaseChange = true;
         _model.hydrate(recovery.preset, recovery.state, recovery.remainingSeconds, recovery.cyclesCompleted, recovery.currentCycle);
         _timerService.start(method(:onTimerTick), 1000);
+    }
+
+    function getHistoryRepo() as HistoryRepository {
+        return _historyRepo;
+    }
+
+    private function _appendSessionToHistory() as Void {
+        var preset = _model.getPreset();
+        if (preset == null) {
+            return;
+        }
+        var p = preset as Preset;
+        var presetLabel = p.isCustom ? "Custom" : Lang.format("$1$/$2$/$3$", [p.workMin, p.breakMin, p.cycles]);
+        var totalDuration = (p.workMin + p.breakMin) * p.cycles * 60;
+        var session = new Session(
+            Time.now().value(),
+            presetLabel,
+            p.workMin,
+            p.breakMin,
+            p.cycles,
+            totalDuration
+        );
+        _historyRepo.append(session);
     }
 }

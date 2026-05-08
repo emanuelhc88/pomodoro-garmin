@@ -1,5 +1,6 @@
 using Toybox.Graphics as Gfx;
 using Toybox.WatchUi as Ui;
+using Toybox.Application as App;
 using Toybox.Lang;
 
 class HistoryView extends Ui.View {
@@ -12,7 +13,7 @@ class HistoryView extends Ui.View {
 
     function initialize() {
         View.initialize();
-        _sessions = getMockSessions();
+        _sessions = _loadSessions();
         _scrollOffset = 0;
         _focusIdx = 0;
         _visibleCount = 3;
@@ -91,20 +92,13 @@ class HistoryView extends Ui.View {
         }
     }
 
-    private function getMockSessions() as Lang.Array<Session> {
-        var now = Time.now().value();
-        var day = 86400;
-        return [
-            new Session(now - day * 0, "25/5/4", 25, 5, 4, 7200),
-            new Session(now - day * 1, "25/5/4", 25, 5, 4, 7200),
-            new Session(now - day * 1, "50/10/4", 50, 10, 4, 14400),
-            new Session(now - day * 2, "30/5/4", 30, 5, 4, 8400),
-            new Session(now - day * 3, "25/5/4", 25, 5, 4, 7200),
-            new Session(now - day * 4, "25/5/4", 25, 5, 4, 7200),
-            new Session(now - day * 5, "50/10/4", 50, 10, 4, 14400),
-            new Session(now - day * 6, "30/5/4", 30, 5, 4, 8400),
-            new Session(now - day * 7, "25/5/4", 25, 5, 4, 7200),
-            new Session(now - day * 8, "25/5/4", 25, 5, 4, 7200)
-        ];
+    private function _loadSessions() as Lang.Array<Session> {
+        var app = App.getApp() as TomaApp;
+        var all = app.getHistoryRepo().loadAll();
+        var reversed = new [all.size()] as Lang.Array<Session>;
+        for (var i = 0; i < all.size(); i++) {
+            reversed[i] = all[all.size() - 1 - i] as Session;
+        }
+        return reversed;
     }
 }
