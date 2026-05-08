@@ -6,6 +6,7 @@ class TomaApp extends App.AppBase {
     private var _model as PomodoroModel;
     private var _timerService as TimerService;
     private var _attentionService as AttentionService;
+    private var _counterRepo as CounterRepository;
     private var _lastPreset as Preset or Null;
     private var _skipNextPhaseChange as Lang.Boolean = false;
 
@@ -14,6 +15,7 @@ class TomaApp extends App.AppBase {
         _model = new PomodoroModel();
         _timerService = new TimerService();
         _attentionService = new AttentionService();
+        _counterRepo = new CounterRepository();
         _model.addObserver(method(:onModelEvent));
     }
 
@@ -77,10 +79,13 @@ class TomaApp extends App.AppBase {
             var phase = _stateToTransitionPhase(state);
             var view = new PhaseTransitionView(phase, _model.getCurrentCycle(), _model.getTotalCycles());
             Ui.pushView(view, new PhaseTransitionDelegate(view), Ui.SLIDE_LEFT);
+        } else if (event == PomodoroEvent.ON_WORK_PHASE_COMPLETE) {
+            _counterRepo.increment();
         } else if (event == PomodoroEvent.ON_COMPLETE) {
             _attentionService.alertCycleComplete();
             _timerService.stop();
-            var view = new CycleCompleteView(_model.getCyclesCompleted(), _model.getTotalCycles(), 0);
+            var todaySessions = _counterRepo.getTodayCount();
+            var view = new CycleCompleteView(_model.getCyclesCompleted(), _model.getTotalCycles(), todaySessions);
             var delegate = new CycleCompleteDelegate();
             delegate.setView(view);
             Ui.switchToView(view, delegate, Ui.SLIDE_LEFT);

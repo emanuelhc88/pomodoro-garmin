@@ -48,7 +48,12 @@ class CycleCompleteView extends Ui.View {
         if (bucket != :small) {
             var todayY = Dimensions.cycleTodayY(bucket);
             var todayFont = Gfx.FONT_TINY;
-            var todayText = Lang.format("$1$ $2$ $3$", ["Today:", _todaySessions, "sessions"]);
+            var todayText;
+            if (_todaySessions == 1) {
+                todayText = Ui.loadResource(Rez.Strings.today_session_singular) as Lang.String;
+            } else {
+                todayText = Lang.format(Ui.loadResource(Rez.Strings.today_sessions) as Lang.String, [_todaySessions]);
+            }
             dc.setColor(Colors.TEXT_MUTED, Gfx.COLOR_TRANSPARENT);
             dc.drawText(centerX, todayY, todayFont, todayText, Gfx.TEXT_JUSTIFY_CENTER);
         }

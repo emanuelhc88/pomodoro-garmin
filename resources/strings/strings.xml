@@ -11,6 +11,7 @@
     <string id="cycle_complete_title">CYCLE COMPLETE</string>
     <string id="session_n_of_m">Session $1$ of $2$</string>
     <string id="today_sessions">Today: $1$ sessions</string>
+    <string id="today_session_singular">Today: 1 session</string>
     <string id="start_again">Start again</string>
     <string id="done">Done</string>
     <string id="custom_builder_title">Custom</string>

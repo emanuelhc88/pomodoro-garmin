@@ -4,6 +4,19 @@ using Toybox.Time.Gregorian;
 using Toybox.System as Sys;
 
 module DateUtils {
+    function today() as Lang.String {
+        var now = Time.now();
+        var info = Gregorian.info(now, Time.FORMAT_SHORT);
+        var year = info.year as Lang.Number;
+        var month = info.month as Lang.Number;
+        var day = info.day as Lang.Number;
+        return Lang.format("$1$-$2$-$3$", [year.format("%04d"), month.format("%02d"), day.format("%02d")]);
+    }
+
+    function isSameDay(a as Lang.String, b as Lang.String) as Lang.Boolean {
+        return a.equals(b);
+    }
+
     function formatDate(epoch as Lang.Number) as Lang.String {
         var moment = new Time.Moment(epoch);
         var info = Gregorian.info(moment, Time.FORMAT_SHORT);
