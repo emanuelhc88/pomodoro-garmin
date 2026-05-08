@@ -42,4 +42,8 @@
     <string id="confirm_stop_title">Stop session?</string>
     <string id="confirm_stop_stop">Stop</string>
     <string id="confirm_stop_continue">Continue</string>
+    <string id="recovery_title">Resume session?</string>
+    <string id="recovery_remaining">Remaining: $1$</string>
+    <string id="recovery_resume">Resume</string>
+    <string id="recovery_discard">Discard</string>
 </resources>

@@ -249,6 +249,12 @@ module Dimensions {
         return 20;
     }
 
+    function confirmSubtitleY(bucket as Lang.Symbol) as Lang.Number {
+        if (bucket == :small) { return 33; }
+        if (bucket == :large) { return 55; }
+        return 40;
+    }
+
     function confirmButton1Y(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 50; }
         if (bucket == :large) { return 85; }

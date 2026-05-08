@@ -1,3 +1,4 @@
+using Toybox.Application as App;
 using Toybox.WatchUi as Ui;
 using Toybox.Lang;
 
@@ -11,14 +12,16 @@ class SettingsMenuDelegate extends Ui.Menu2InputDelegate {
 
         if (item instanceof Ui.ToggleMenuItem) {
             var toggle = item as Ui.ToggleMenuItem;
+            var app = App.getApp() as TomaApp;
+            var repo = app.getSettingsRepo();
             if (id == :soundEnabled) {
-                SettingsState.soundEnabled = toggle.isEnabled();
+                repo.setSoundEnabled(toggle.isEnabled());
             } else if (id == :vibrationEnabled) {
-                SettingsState.vibrationEnabled = toggle.isEnabled();
+                repo.setVibrationEnabled(toggle.isEnabled());
             } else if (id == :backlightOnAlert) {
-                SettingsState.backlightOnAlert = toggle.isEnabled();
+                repo.setBacklightOnAlert(toggle.isEnabled());
             } else if (id == :recordAsActivity) {
-                SettingsState.recordAsActivity = toggle.isEnabled();
+                repo.setRecordAsActivity(toggle.isEnabled());
             }
             return;
         }

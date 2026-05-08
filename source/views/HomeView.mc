@@ -1,3 +1,4 @@
+using Toybox.Application as App;
 using Toybox.Graphics as Gfx;
 using Toybox.WatchUi as Ui;
 using Toybox.Lang;
@@ -16,6 +17,11 @@ class HomeView extends Ui.View {
         _cyclesLabel = Ui.loadResource(Rez.Strings.unit_cycles) as Lang.String;
         _customLabel = Ui.loadResource(Rez.Strings.preset_custom_label) as Lang.String;
         _settingsLabel = Ui.loadResource(Rez.Strings.settings_label) as Lang.String;
+        var app = App.getApp() as TomaApp;
+        var savedIdx = app.getSettingsRepo().getLastSelectedPreset();
+        if (savedIdx >= 0 && savedIdx < _totalItems) {
+            _selectedIndex = savedIdx;
+        }
     }
 
     function getSelectedIndex() as Lang.Number {

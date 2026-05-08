@@ -25,14 +25,10 @@ class HomeDelegate extends Ui.BehaviorDelegate {
 
         if (selectedIndex == 3) {
             var app = App.getApp() as TomaApp;
-            var customPreset = app.getCustomPreset();
-            if (customPreset != null) {
-                app.startSession(customPreset);
-                Ui.pushView(new TimerView(app.getModel()), new TimerDelegate(), Ui.SLIDE_LEFT);
-            } else {
-                var view = new CustomBuilderView();
-                Ui.pushView(view, new CustomBuilderDelegate(view), Ui.SLIDE_LEFT);
-            }
+            var repo = app.getSettingsRepo();
+            var customPreset = new Preset(repo.getCustomWorkMin(), repo.getCustomBreakMin(), repo.getCustomCycles(), true);
+            var view = new CustomBuilderView(customPreset.workMin, customPreset.breakMin, customPreset.cycles);
+            Ui.pushView(view, new CustomBuilderDelegate(view), Ui.SLIDE_LEFT);
             return true;
         }
 
@@ -44,6 +40,7 @@ class HomeDelegate extends Ui.BehaviorDelegate {
         var presets = Presets.builtinList();
         var preset = presets[selectedIndex] as Preset;
         var app = App.getApp() as TomaApp;
+        app.getSettingsRepo().setLastSelectedPreset(selectedIndex);
         app.startSession(preset);
         Ui.pushView(new TimerView(app.getModel()), new TimerDelegate(), Ui.SLIDE_LEFT);
         return true;

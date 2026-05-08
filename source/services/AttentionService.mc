@@ -3,7 +3,10 @@ using Toybox.System;
 using Toybox.Lang;
 
 class AttentionService {
-    function initialize() {
+    private var _settingsRepo as SettingsRepository;
+
+    function initialize(settingsRepo as SettingsRepository) {
+        _settingsRepo = settingsRepo;
     }
 
     function alertStart() as Void {
@@ -39,7 +42,7 @@ class AttentionService {
     }
 
     private function _vibrate(profile as Lang.Array<Attention.VibeProfile>) as Void {
-        if (!SettingsState.vibrationEnabled) {
+        if (!_settingsRepo.getVibrationEnabled()) {
             return;
         }
         if (_isDoNotDisturb()) {
@@ -51,7 +54,7 @@ class AttentionService {
     }
 
     private function _playTone() as Void {
-        if (!SettingsState.soundEnabled) {
+        if (!_settingsRepo.getSoundEnabled()) {
             return;
         }
         if (_isDoNotDisturb()) {
@@ -63,7 +66,7 @@ class AttentionService {
     }
 
     private function _flashBacklight() as Void {
-        if (!SettingsState.backlightOnAlert) {
+        if (!_settingsRepo.getBacklightOnAlert()) {
             return;
         }
         if (Attention has :backlight) {

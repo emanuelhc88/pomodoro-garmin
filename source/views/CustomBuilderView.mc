@@ -5,9 +5,9 @@ using Toybox.Lang;
 class CustomBuilderView extends Ui.View {
     private var _selectedLine as Lang.Number = 0;
     private var _editing as Lang.Boolean = false;
-    private var _workMin as Lang.Number = 25;
-    private var _breakMin as Lang.Number = 5;
-    private var _cycles as Lang.Number = 4;
+    private var _workMin as Lang.Number;
+    private var _breakMin as Lang.Number;
+    private var _cycles as Lang.Number;
     private var _editStartValue as Lang.Number = 0;
 
     private var _titleStr as Lang.String;
@@ -18,8 +18,11 @@ class CustomBuilderView extends Ui.View {
     private var _hintsNav as Lang.String;
     private var _hintsEdit as Lang.String;
 
-    function initialize() {
+    function initialize(workMin as Lang.Number, breakMin as Lang.Number, cycles as Lang.Number) {
         View.initialize();
+        _workMin = workMin;
+        _breakMin = breakMin;
+        _cycles = cycles;
         _titleStr = Ui.loadResource(Rez.Strings.custom_builder_title) as Lang.String;
         _labelWork = Ui.loadResource(Rez.Strings.custom_label_work) as Lang.String;
         _labelBreak = Ui.loadResource(Rez.Strings.custom_label_break) as Lang.String;

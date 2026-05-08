@@ -7,20 +7,30 @@ class TomaApp extends App.AppBase {
     private var _timerService as TimerService;
     private var _attentionService as AttentionService;
     private var _counterRepo as CounterRepository;
+    private var _settingsRepo as SettingsRepository;
+    private var _recoveryService as RecoveryService;
     private var _lastPreset as Preset or Null;
-    private var _customPreset as Preset or Null = null;
     private var _skipNextPhaseChange as Lang.Boolean = false;
 
     function initialize() {
         AppBase.initialize();
         _model = new PomodoroModel();
         _timerService = new TimerService();
-        _attentionService = new AttentionService();
+        _settingsRepo = new SettingsRepository();
+        _recoveryService = new RecoveryService();
+        _attentionService = new AttentionService(_settingsRepo);
         _counterRepo = new CounterRepository();
         _model.addObserver(method(:onModelEvent));
     }
 
     function getInitialView() as [Ui.Views] or [Ui.Views, Ui.InputDelegates] {
+        var recovery = _recoveryService.checkOnStart();
+        if (recovery != null) {
+            var rs = recovery as RecoveryState;
+            var view = new RecoveryView(rs.remainingSeconds);
+            var delegate = new RecoveryDelegate(view, rs);
+            return [view, delegate];
+        }
         var view = new HomeView();
         var delegate = new HomeDelegate(view);
         return [view, delegate];
@@ -42,6 +52,7 @@ class TomaApp extends App.AppBase {
             return;
         }
         _model.tick();
+        _recoveryService.persistThrottled(_model);
         Ui.requestUpdate();
     }
 
@@ -58,6 +69,7 @@ class TomaApp extends App.AppBase {
     function stopSession() as Void {
         _model.stop();
         _timerService.stop();
+        _recoveryService.clear();
     }
 
     function onModelEvent(event as Lang.Number) as Void {
@@ -85,6 +97,7 @@ class TomaApp extends App.AppBase {
         } else if (event == PomodoroEvent.ON_COMPLETE) {
             _attentionService.alertCycleComplete();
             _timerService.stop();
+            _recoveryService.clear();
             var todaySessions = _counterRepo.getTodayCount();
             var view = new CycleCompleteView(_model.getCyclesCompleted(), _model.getTotalCycles(), todaySessions);
             var delegate = new CycleCompleteDelegate();
@@ -103,11 +116,17 @@ class TomaApp extends App.AppBase {
         return _lastPreset;
     }
 
-    function getCustomPreset() as Preset or Null {
-        return _customPreset;
+    function getSettingsRepo() as SettingsRepository {
+        return _settingsRepo;
     }
 
-    function setCustomPreset(preset as Preset) as Void {
-        _customPreset = preset;
+    function getRecoveryService() as RecoveryService {
+        return _recoveryService;
+    }
+
+    function resumeFromRecovery(recovery as RecoveryState) as Void {
+        _skipNextPhaseChange = true;
+        _model.hydrate(recovery.preset, recovery.state, recovery.remainingSeconds, recovery.cyclesCompleted, recovery.currentCycle);
+        _timerService.start(method(:onTimerTick), 1000);
     }
 }

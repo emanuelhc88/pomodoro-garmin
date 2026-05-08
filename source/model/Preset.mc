@@ -36,6 +36,24 @@ class Preset {
     function getLongBreakSeconds() as Lang.Number {
         return breakMin * 60 * 3;
     }
+
+    function toDict() as Lang.Dictionary {
+        return {
+            "workMin" => workMin,
+            "breakMin" => breakMin,
+            "cycles" => cycles,
+            "isCustom" => isCustom
+        };
+    }
+
+    static function fromDict(dict as Lang.Dictionary) as Preset {
+        return new Preset(
+            dict["workMin"] as Lang.Number,
+            dict["breakMin"] as Lang.Number,
+            dict["cycles"] as Lang.Number,
+            dict["isCustom"] as Lang.Boolean
+        );
+    }
 }
 
 module Presets {

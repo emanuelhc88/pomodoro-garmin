@@ -80,6 +80,26 @@ class PomodoroModel {
         _emit(PomodoroEvent.ON_STOP);
     }
 
+    function hydrate(preset as Preset, state as Lang.Number, remainingSeconds as Lang.Number, cyclesCompleted as Lang.Number, currentCycle as Lang.Number) as Void {
+        _preset = preset;
+        _state = state;
+        _remainingSeconds = remainingSeconds;
+        _cyclesCompleted = cyclesCompleted;
+        _currentCycle = currentCycle;
+        _paused = false;
+        if (state == PomodoroState.RUNNING_WORK) {
+            _totalPhaseSeconds = preset.workMin * 60;
+        } else if (state == PomodoroState.RUNNING_SHORT_BREAK) {
+            _totalPhaseSeconds = preset.breakMin * 60;
+        } else if (state == PomodoroState.RUNNING_LONG_BREAK) {
+            _totalPhaseSeconds = preset.getLongBreakSeconds();
+        } else {
+            _totalPhaseSeconds = remainingSeconds;
+        }
+        _emit(PomodoroEvent.ON_START);
+        _emit(PomodoroEvent.ON_PHASE_CHANGE);
+    }
+
     // --- Observers ---
 
     function addObserver(callback as Lang.Method) as Void {
