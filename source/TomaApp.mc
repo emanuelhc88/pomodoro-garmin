@@ -8,6 +8,7 @@ class TomaApp extends App.AppBase {
     private var _attentionService as AttentionService;
     private var _counterRepo as CounterRepository;
     private var _settingsRepo as SettingsRepository;
+    private var _presetRepo as PresetRepository;
     private var _recoveryService as RecoveryService;
     private var _lastPreset as Preset or Null;
     private var _skipNextPhaseChange as Lang.Boolean = false;
@@ -17,6 +18,7 @@ class TomaApp extends App.AppBase {
         _model = new PomodoroModel();
         _timerService = new TimerService();
         _settingsRepo = new SettingsRepository();
+        _presetRepo = new PresetRepository(_settingsRepo);
         _recoveryService = new RecoveryService();
         _attentionService = new AttentionService(_settingsRepo);
         _counterRepo = new CounterRepository();
@@ -118,6 +120,10 @@ class TomaApp extends App.AppBase {
 
     function getSettingsRepo() as SettingsRepository {
         return _settingsRepo;
+    }
+
+    function getPresetRepo() as PresetRepository {
+        return _presetRepo;
     }
 
     function getRecoveryService() as RecoveryService {

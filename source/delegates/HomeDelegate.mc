@@ -25,8 +25,7 @@ class HomeDelegate extends Ui.BehaviorDelegate {
 
         if (selectedIndex == 3) {
             var app = App.getApp() as TomaApp;
-            var repo = app.getSettingsRepo();
-            var customPreset = new Preset(repo.getCustomWorkMin(), repo.getCustomBreakMin(), repo.getCustomCycles(), true);
+            var customPreset = app.getPresetRepo().loadCustom();
             var view = new CustomBuilderView(customPreset.workMin, customPreset.breakMin, customPreset.cycles);
             Ui.pushView(view, new CustomBuilderDelegate(view), Ui.SLIDE_LEFT);
             return true;

@@ -43,11 +43,8 @@ class CustomBuilderDelegate extends Ui.BehaviorDelegate {
         } else {
             var app = App.getApp() as TomaApp;
             var preset = _view.buildPreset();
-            var repo = app.getSettingsRepo();
-            repo.setCustomWorkMin(preset.workMin);
-            repo.setCustomBreakMin(preset.breakMin);
-            repo.setCustomCycles(preset.cycles);
-            repo.setLastSelectedPreset(3);
+            app.getPresetRepo().saveCustom(preset);
+            app.getSettingsRepo().setLastSelectedPreset(3);
             app.startSession(preset);
             Ui.switchToView(new TimerView(app.getModel()), new TimerDelegate(), Ui.SLIDE_LEFT);
         }
