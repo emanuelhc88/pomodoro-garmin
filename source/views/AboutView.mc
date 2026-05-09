@@ -12,9 +12,9 @@ class AboutView extends Ui.View {
     }
 
     function onLayout(dc as Gfx.Dc) as Void {
-        _versionText = Ui.loadResource(Rez.Strings.about_version) as Lang.String;
-        _taglineText = Ui.loadResource(Rez.Strings.about_tagline) as Lang.String;
-        _creditsText = Ui.loadResource(Rez.Strings.about_credits) as Lang.String;
+        _versionText = Strings.get(:about_version);
+        _taglineText = Strings.get(:about_tagline);
+        _creditsText = Strings.get(:about_credits);
     }
 
     function onUpdate(dc as Gfx.Dc) as Void {

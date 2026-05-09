@@ -3,22 +3,22 @@ using Toybox.Lang;
 
 class LanguageMenu extends Ui.Menu2 {
     function initialize() {
-        Menu2.initialize({:title => Ui.loadResource(Rez.Strings.settings_language)});
+        Menu2.initialize({:title => Strings.get(:settings_language)});
 
         addItem(new Ui.MenuItem(
-            Ui.loadResource(Rez.Strings.language_auto) as Lang.String,
+            Strings.get(:language_auto),
             null,
             :auto,
             null
         ));
         addItem(new Ui.MenuItem(
-            Ui.loadResource(Rez.Strings.language_en) as Lang.String,
+            Strings.get(:language_en),
             null,
             :en,
             null
         ));
         addItem(new Ui.MenuItem(
-            Ui.loadResource(Rez.Strings.language_pt) as Lang.String,
+            Strings.get(:language_pt),
             null,
             :pt,
             null

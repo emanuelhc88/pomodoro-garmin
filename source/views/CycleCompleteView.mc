@@ -35,7 +35,7 @@ class CycleCompleteView extends Ui.View {
 
         var headingY = Dimensions.cycleHeadingY(bucket);
         var headingFont = (bucket == :small) ? Gfx.FONT_SMALL : Gfx.FONT_MEDIUM;
-        var headingText = Ui.loadResource(Rez.Strings.cycle_complete_title) as Lang.String;
+        var headingText = Strings.get(:cycle_complete_title);
         dc.setColor(Colors.ACCENT, Gfx.COLOR_TRANSPARENT);
         dc.drawText(centerX, headingY, headingFont, headingText, Gfx.TEXT_JUSTIFY_CENTER);
 
@@ -50,9 +50,9 @@ class CycleCompleteView extends Ui.View {
             var todayFont = Gfx.FONT_TINY;
             var todayText;
             if (_todaySessions == 1) {
-                todayText = Ui.loadResource(Rez.Strings.today_session_singular) as Lang.String;
+                todayText = Strings.get(:today_session_singular);
             } else {
-                todayText = Lang.format(Ui.loadResource(Rez.Strings.today_sessions) as Lang.String, [_todaySessions]);
+                todayText = Strings.format(:today_sessions, [_todaySessions]);
             }
             dc.setColor(Colors.TEXT_MUTED, Gfx.COLOR_TRANSPARENT);
             dc.drawText(centerX, todayY, todayFont, todayText, Gfx.TEXT_JUSTIFY_CENTER);
@@ -63,11 +63,11 @@ class CycleCompleteView extends Ui.View {
         var btnX = centerX - btnW / 2;
 
         var btn1Y = Dimensions.cycleButton1Y(bucket);
-        var startText = Ui.loadResource(Rez.Strings.start_again) as Lang.String;
+        var startText = Strings.get(:start_again);
         PrimaryButton.draw(dc, btnX, btn1Y, btnW, btnH, startText, _focusIdx == 0, bucket);
 
         var btn2Y = Dimensions.cycleButton2Y(bucket);
-        var doneText = Ui.loadResource(Rez.Strings.done) as Lang.String;
+        var doneText = Strings.get(:done);
         PrimaryButton.draw(dc, btnX, btn2Y, btnW, btnH, doneText, _focusIdx == 1, bucket);
     }
 }

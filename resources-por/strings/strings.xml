@@ -41,4 +41,9 @@
     <string id="confirm_stop_title">Parar sessao?</string>
     <string id="confirm_stop_stop">Parar</string>
     <string id="confirm_stop_continue">Continuar</string>
+    <string id="today_session_singular">Hoje: 1 sessao</string>
+    <string id="recovery_title">Retomar sessao?</string>
+    <string id="recovery_remaining">Restante: $1$</string>
+    <string id="recovery_resume">Retomar</string>
+    <string id="recovery_discard">Descartar</string>
 </resources>

@@ -1,3 +1,4 @@
+using Toybox.Application;
 using Toybox.Lang;
 using Toybox.Time;
 using Toybox.Time.Gregorian;
@@ -40,10 +41,12 @@ module DateUtils {
     }
 
     function getLocale() as Lang.Symbol {
-        var lang = Sys.getDeviceSettings().systemLanguage;
-        if (lang == Sys.LANGUAGE_POR) {
-            return :pt;
-        }
+        var app = Application.getApp() as TomaApp;
+        var setting = app.getSettingsRepo().getLanguage();
+        if (setting.equals("pt")) { return :pt; }
+        if (setting.equals("en")) { return :en; }
+        var sysLang = Sys.getDeviceSettings().systemLanguage;
+        if (sysLang == Sys.LANGUAGE_POR) { return :pt; }
         return :en;
     }
 }

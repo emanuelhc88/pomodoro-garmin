@@ -17,8 +17,8 @@ class HistoryView extends Ui.View {
         _scrollOffset = 0;
         _focusIdx = 0;
         _visibleCount = 3;
-        _titleText = Ui.loadResource(Rez.Strings.history_title) as Lang.String;
-        _emptyText = Ui.loadResource(Rez.Strings.history_empty) as Lang.String;
+        _titleText = Strings.get(:history_title);
+        _emptyText = Strings.get(:history_empty);
     }
 
     function getSessionCount() as Lang.Number {

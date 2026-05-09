@@ -1,6 +1,7 @@
 using Toybox.Graphics as Gfx;
 using Toybox.WatchUi as Ui;
 using Toybox.Lang;
+using Toybox.Application as App;
 
 class TimerView extends Ui.View {
     private var _model as PomodoroModel;
@@ -9,7 +10,7 @@ class TimerView extends Ui.View {
     function initialize(model as PomodoroModel) {
         View.initialize();
         _model = model;
-        _pausedText = Ui.loadResource(Rez.Strings.state_paused) as Lang.String;
+        _pausedText = Strings.get(:state_paused);
     }
 
     function onUpdate(dc as Gfx.Dc) as Void {
@@ -87,8 +88,8 @@ class TimerView extends Ui.View {
     }
 
     private function _getPhaseText(phase as Lang.Symbol) as Lang.String {
-        if (phase == :running_work) { return "FOCUS"; }
-        if (phase == :running_short_break) { return "BREAK"; }
-        return "LONG BREAK";
+        if (phase == :running_work) { return Strings.get(:phase_focus); }
+        if (phase == :running_short_break) { return Strings.get(:phase_break); }
+        return Strings.get(:phase_long_break);
     }
 }

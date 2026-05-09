@@ -11,15 +11,14 @@ class RecoveryView extends Ui.View {
 
     function initialize(remainingSeconds as Lang.Number) {
         View.initialize();
-        _titleText = Ui.loadResource(Rez.Strings.recovery_title) as Lang.String;
-        _resumeText = Ui.loadResource(Rez.Strings.recovery_resume) as Lang.String;
-        _discardText = Ui.loadResource(Rez.Strings.recovery_discard) as Lang.String;
+        _titleText = Strings.get(:recovery_title);
+        _resumeText = Strings.get(:recovery_resume);
+        _discardText = Strings.get(:recovery_discard);
 
         var mins = remainingSeconds / 60;
         var secs = remainingSeconds % 60;
         var timeStr = Lang.format("$1$:$2$", [mins.format("%02d"), secs.format("%02d")]);
-        var pattern = Ui.loadResource(Rez.Strings.recovery_remaining) as Lang.String;
-        _remainingFormatted = Lang.format(pattern, [timeStr]);
+        _remainingFormatted = Strings.format(:recovery_remaining, [timeStr]);
     }
 
     function setFocusIdx(idx as Lang.Number) as Void {

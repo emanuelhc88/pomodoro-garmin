@@ -14,9 +14,9 @@ class HomeView extends Ui.View {
     function initialize() {
         View.initialize();
         _presets = Presets.builtinList();
-        _cyclesLabel = Ui.loadResource(Rez.Strings.unit_cycles) as Lang.String;
-        _customLabel = Ui.loadResource(Rez.Strings.preset_custom_label) as Lang.String;
-        _settingsLabel = Ui.loadResource(Rez.Strings.settings_label) as Lang.String;
+        _cyclesLabel = Strings.get(:unit_cycles);
+        _customLabel = Strings.get(:preset_custom_label);
+        _settingsLabel = Strings.get(:settings_label);
         var app = App.getApp() as TomaApp;
         var savedIdx = app.getSettingsRepo().getLastSelectedPreset();
         if (savedIdx >= 0 && savedIdx < _totalItems) {

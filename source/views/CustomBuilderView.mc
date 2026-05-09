@@ -23,13 +23,13 @@ class CustomBuilderView extends Ui.View {
         _workMin = workMin;
         _breakMin = breakMin;
         _cycles = cycles;
-        _titleStr = Ui.loadResource(Rez.Strings.custom_builder_title) as Lang.String;
-        _labelWork = Ui.loadResource(Rez.Strings.custom_label_work) as Lang.String;
-        _labelBreak = Ui.loadResource(Rez.Strings.custom_label_break) as Lang.String;
-        _labelCycles = Ui.loadResource(Rez.Strings.custom_label_cycles) as Lang.String;
-        _unitMin = Ui.loadResource(Rez.Strings.unit_min) as Lang.String;
-        _hintsNav = Ui.loadResource(Rez.Strings.hints_nav) as Lang.String;
-        _hintsEdit = Ui.loadResource(Rez.Strings.hints_edit) as Lang.String;
+        _titleStr = Strings.get(:custom_builder_title);
+        _labelWork = Strings.get(:custom_label_work);
+        _labelBreak = Strings.get(:custom_label_break);
+        _labelCycles = Strings.get(:custom_label_cycles);
+        _unitMin = Strings.get(:unit_min);
+        _hintsNav = Strings.get(:hints_nav);
+        _hintsEdit = Strings.get(:hints_edit);
     }
 
     function getSelectedLine() as Lang.Number {

@@ -54,17 +54,15 @@ class PhaseTransitionView extends Ui.View {
 
         var hintY = Dimensions.phaseHintY(bucket);
         var hintFont = (bucket == :small) ? Gfx.FONT_XTINY : Gfx.FONT_TINY;
-        var hintText = Lang.format("$1$ $2$ $3$ $4$", [
-            "Session", _sessionNum, "of", _totalSessions
-        ]);
+        var hintText = Strings.format(:session_n_of_m, [_sessionNum, _totalSessions]);
         dc.setColor(Colors.TEXT_MUTED, Gfx.COLOR_TRANSPARENT);
         dc.drawText(centerX, hintY, hintFont, hintText, Gfx.TEXT_JUSTIFY_CENTER | Gfx.TEXT_JUSTIFY_VCENTER);
     }
 
     private function getPhaseText() as Lang.String {
-        if (_phase == :focus) { return Ui.loadResource(Rez.Strings.phase_focus) as Lang.String; }
-        if (_phase == :break) { return Ui.loadResource(Rez.Strings.phase_break) as Lang.String; }
-        return Ui.loadResource(Rez.Strings.phase_long_break) as Lang.String;
+        if (_phase == :focus) { return Strings.get(:phase_focus); }
+        if (_phase == :break) { return Strings.get(:phase_break); }
+        return Strings.get(:phase_long_break);
     }
 
     private function getPhaseColor() as Lang.Number {

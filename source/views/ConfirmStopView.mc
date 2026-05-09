@@ -10,9 +10,9 @@ class ConfirmStopView extends Ui.View {
 
     function initialize() {
         View.initialize();
-        _titleText = Ui.loadResource(Rez.Strings.confirm_stop_title) as Lang.String;
-        _stopText = Ui.loadResource(Rez.Strings.confirm_stop_stop) as Lang.String;
-        _continueText = Ui.loadResource(Rez.Strings.confirm_stop_continue) as Lang.String;
+        _titleText = Strings.get(:confirm_stop_title);
+        _stopText = Strings.get(:confirm_stop_stop);
+        _continueText = Strings.get(:confirm_stop_continue);
     }
 
     function setFocusIdx(idx as Lang.Number) as Void {
