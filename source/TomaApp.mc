@@ -12,6 +12,7 @@ class TomaApp extends App.AppBase {
     private var _settingsRepo as SettingsRepository;
     private var _presetRepo as PresetRepository;
     private var _recoveryService as RecoveryService;
+    private var _activityService as ActivityService;
     private var _lastPreset as Preset or Null;
     private var _skipNextPhaseChange as Lang.Boolean = false;
 
@@ -23,6 +24,7 @@ class TomaApp extends App.AppBase {
         _presetRepo = new PresetRepository(_settingsRepo);
         _recoveryService = new RecoveryService();
         _attentionService = new AttentionService(_settingsRepo);
+        _activityService = new ActivityService(_settingsRepo);
         _counterRepo = new CounterRepository();
         _historyRepo = new HistoryRepository();
         _model.addObserver(method(:onModelEvent));
@@ -72,6 +74,7 @@ class TomaApp extends App.AppBase {
     }
 
     function stopSession() as Void {
+        _activityService.discard();
         _model.stop();
         _timerService.stop();
         _recoveryService.clear();
@@ -80,6 +83,7 @@ class TomaApp extends App.AppBase {
     function onModelEvent(event as Lang.Number) as Void {
         if (event == PomodoroEvent.ON_START) {
             _attentionService.alertStart();
+            _activityService.start();
         } else if (event == PomodoroEvent.ON_PHASE_CHANGE) {
             if (_skipNextPhaseChange) {
                 _skipNextPhaseChange = false;
@@ -101,6 +105,7 @@ class TomaApp extends App.AppBase {
             _counterRepo.increment();
         } else if (event == PomodoroEvent.ON_COMPLETE) {
             _attentionService.alertCycleComplete();
+            _activityService.stop();
             _appendSessionToHistory();
             _timerService.stop();
             _recoveryService.clear();
