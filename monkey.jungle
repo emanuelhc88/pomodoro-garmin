@@ -2,3 +2,31 @@ project.manifest = manifest.xml
 
 base.sourcePath = source;tests
 base.resourcePath = resources;resources-por
+base.excludeAnnotations = test
+
+# MIP no-touch no-speaker
+fr255.excludeAnnotations = $(base.excludeAnnotations);amoled;hasTouch;hasSpeaker
+fr255s.excludeAnnotations = $(base.excludeAnnotations);amoled;hasTouch;hasSpeaker
+
+# MIP no-touch has-speaker
+fr255m.excludeAnnotations = $(base.excludeAnnotations);amoled;hasTouch
+
+# MIP no-touch no-speaker
+fenix7.excludeAnnotations = $(base.excludeAnnotations);amoled;hasTouch;hasSpeaker
+fenix7pro.excludeAnnotations = $(base.excludeAnnotations);amoled;hasTouch;hasSpeaker
+
+# MIP has-touch no-speaker
+fr955.excludeAnnotations = $(base.excludeAnnotations);amoled;noTouch;hasSpeaker
+
+# AMOLED has-touch no-speaker
+fr265.excludeAnnotations = $(base.excludeAnnotations);mip;noTouch;hasSpeaker
+fr265s.excludeAnnotations = $(base.excludeAnnotations);mip;noTouch;hasSpeaker
+fr965.excludeAnnotations = $(base.excludeAnnotations);mip;noTouch;hasSpeaker
+epix2.excludeAnnotations = $(base.excludeAnnotations);mip;noTouch;hasSpeaker
+vivoactive5.excludeAnnotations = $(base.excludeAnnotations);mip;noTouch;hasSpeaker
+
+# AMOLED has-touch has-speaker
+fenix843mm.excludeAnnotations = $(base.excludeAnnotations);mip;noTouch
+fenix847mm.excludeAnnotations = $(base.excludeAnnotations);mip;noTouch
+venu3.excludeAnnotations = $(base.excludeAnnotations);mip;noTouch
+venu3s.excludeAnnotations = $(base.excludeAnnotations);mip;noTouch

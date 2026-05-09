@@ -22,4 +22,9 @@ class TimerDelegate extends Ui.BehaviorDelegate {
         }
         return true;
     }
+
+    function onMenu() as Lang.Boolean {
+        Ui.pushView(new SettingsMenu(), new SettingsMenuDelegate(), Ui.SLIDE_UP);
+        return true;
+    }
 }
