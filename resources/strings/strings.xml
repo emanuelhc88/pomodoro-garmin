@@ -1,5 +1,5 @@
 <resources>
-    <string id="app_name">Toma</string>
+    <string id="app_name">Toma Pomodoro</string>
     <string id="preset_cycles">%d cycles</string>
     <string id="unit_cycles">cycles</string>
     <string id="preset_custom_label">CUSTOM</string>
@@ -38,7 +38,7 @@
     <string id="language_pt">Portugues</string>
     <string id="about_tagline">Pomodoro for developers</string>
     <string id="about_version">v1.0.0</string>
-    <string id="about_credits">Made with focus</string>
+    <string id="about_credits">Made by Emanuel v7k</string>
     <string id="confirm_stop_title">Stop session?</string>
     <string id="confirm_stop_stop">Stop</string>
     <string id="confirm_stop_continue">Continue</string>

@@ -65,7 +65,6 @@ class ActivityService {
         return _session != null;
     }
 
-    (:debug)
     private function _debugLog(msg as Lang.String) as Void {
         System.println("[ActivityService] " + msg);
     }

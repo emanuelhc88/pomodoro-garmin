@@ -4,29 +4,57 @@ base.sourcePath = source;tests
 base.resourcePath = resources;resources-por
 base.excludeAnnotations = test
 
-# MIP no-touch no-speaker
+# Launcher icon sizes: 40 (fr255*, fr955, fenix7*), 56 (vivoactive5),
+# 60 (fr265*, fenix843mm, epix2), 65 (fr965, fenix847mm), 70 (venu3*)
+
+# MIP no-touch no-speaker — 40x40 icon
+fr255.resourcePath = $(base.resourcePath);resources-icon-40
 fr255.excludeAnnotations = $(base.excludeAnnotations);amoled;hasTouch;hasSpeaker
+fr255s.resourcePath = $(base.resourcePath);resources-icon-40
 fr255s.excludeAnnotations = $(base.excludeAnnotations);amoled;hasTouch;hasSpeaker
 
-# MIP no-touch has-speaker
+# MIP no-touch has-speaker — 40x40 icon
+fr255m.resourcePath = $(base.resourcePath);resources-icon-40
 fr255m.excludeAnnotations = $(base.excludeAnnotations);amoled;hasTouch
 
-# MIP no-touch no-speaker
+# MIP no-touch no-speaker — 40x40 icon
+fenix7.resourcePath = $(base.resourcePath);resources-icon-40
 fenix7.excludeAnnotations = $(base.excludeAnnotations);amoled;hasTouch;hasSpeaker
+fenix7pro.resourcePath = $(base.resourcePath);resources-icon-40
 fenix7pro.excludeAnnotations = $(base.excludeAnnotations);amoled;hasTouch;hasSpeaker
 
-# MIP has-touch no-speaker
+# MIP has-touch no-speaker — 40x40 icon
+fr955.resourcePath = $(base.resourcePath);resources-icon-40
 fr955.excludeAnnotations = $(base.excludeAnnotations);amoled;noTouch;hasSpeaker
 
-# AMOLED has-touch no-speaker
+# AMOLED has-touch no-speaker — 60x60 icon
+fr265.resourcePath = $(base.resourcePath);resources-icon-60
 fr265.excludeAnnotations = $(base.excludeAnnotations);mip;noTouch;hasSpeaker
+fr265s.resourcePath = $(base.resourcePath);resources-icon-60
 fr265s.excludeAnnotations = $(base.excludeAnnotations);mip;noTouch;hasSpeaker
+
+# AMOLED has-touch no-speaker — 65x65 icon
+fr965.resourcePath = $(base.resourcePath);resources-icon-65
 fr965.excludeAnnotations = $(base.excludeAnnotations);mip;noTouch;hasSpeaker
+
+# AMOLED has-touch no-speaker — 60x60 icon
+epix2.resourcePath = $(base.resourcePath);resources-icon-60
 epix2.excludeAnnotations = $(base.excludeAnnotations);mip;noTouch;hasSpeaker
+
+# AMOLED has-touch no-speaker — 56x56 icon
+vivoactive5.resourcePath = $(base.resourcePath);resources-icon-56
 vivoactive5.excludeAnnotations = $(base.excludeAnnotations);mip;noTouch;hasSpeaker
 
-# AMOLED has-touch has-speaker
+# AMOLED has-touch has-speaker — 60x60 icon
+fenix843mm.resourcePath = $(base.resourcePath);resources-icon-60
 fenix843mm.excludeAnnotations = $(base.excludeAnnotations);mip;noTouch
+
+# AMOLED has-touch has-speaker — 65x65 icon
+fenix847mm.resourcePath = $(base.resourcePath);resources-icon-65
 fenix847mm.excludeAnnotations = $(base.excludeAnnotations);mip;noTouch
+
+# AMOLED has-touch has-speaker — 70x70 icon
+venu3.resourcePath = $(base.resourcePath);resources-icon-70
 venu3.excludeAnnotations = $(base.excludeAnnotations);mip;noTouch
+venu3s.resourcePath = $(base.resourcePath);resources-icon-70
 venu3s.excludeAnnotations = $(base.excludeAnnotations);mip;noTouch
