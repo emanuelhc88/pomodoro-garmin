@@ -29,10 +29,10 @@ module SessionPills {
                 dc.setColor(Colors.BRAND, Gfx.COLOR_TRANSPARENT);
                 dc.fillCircle(px, y, pillSize);
             } else if (i == completedCycles) {
-                dc.setColor(Colors.ACCENT, Gfx.COLOR_TRANSPARENT);
+                dc.setColor(Colors.BRAND, Gfx.COLOR_TRANSPARENT);
                 dc.fillCircle(px, y, pillSize);
             } else {
-                dc.setColor(Colors.BORDER, Gfx.COLOR_TRANSPARENT);
+                dc.setColor(Colors.BRAND, Gfx.COLOR_TRANSPARENT);
                 dc.setPenWidth(1);
                 dc.drawCircle(px, y, pillSize);
             }

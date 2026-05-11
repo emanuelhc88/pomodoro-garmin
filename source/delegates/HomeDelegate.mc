@@ -1,4 +1,5 @@
 using Toybox.Application as App;
+using Toybox.System;
 using Toybox.WatchUi as Ui;
 using Toybox.Lang;
 
@@ -42,6 +43,11 @@ class HomeDelegate extends Ui.BehaviorDelegate {
         app.getSettingsRepo().setLastSelectedPreset(selectedIndex);
         app.startSession(preset);
         Ui.pushView(new TimerView(app.getModel()), new TimerDelegate(), Ui.SLIDE_LEFT);
+        return true;
+    }
+
+    function onBack() as Lang.Boolean {
+        System.exit();
         return true;
     }
 

@@ -14,7 +14,7 @@ module TimerDisplay {
         var seconds = remainingSeconds % 60;
         var text = Lang.format("$1$:$2$", [minutes.format("%02d"), seconds.format("%02d")]);
 
-        var font = (bucket == :small) ? Gfx.FONT_NUMBER_MEDIUM : Gfx.FONT_NUMBER_THAI_HOT;
+        var font = (bucket == :small) ? Gfx.FONT_NUMBER_MEDIUM : Gfx.FONT_NUMBER_HOT;
         var fontHeight = Gfx.getFontHeight(font);
         var y = centerY - fontHeight / 2;
 

@@ -65,7 +65,7 @@ module Strings {
         if (key == :language_pt) { return "Portugues"; }
         if (key == :about_tagline) { return "Pomodoro for developers"; }
         if (key == :about_version) { return "v1.0.0"; }
-        if (key == :about_credits) { return "Made with focus"; }
+        if (key == :about_credits) { return "Made by Emanuel v7k"; }
         if (key == :confirm_stop_title) { return "Stop session?"; }
         if (key == :confirm_stop_stop) { return "Stop"; }
         if (key == :confirm_stop_continue) { return "Continue"; }
@@ -116,7 +116,7 @@ module Strings {
         if (key == :language_pt) { return "Portugues"; }
         if (key == :about_tagline) { return "Pomodoro para devs"; }
         if (key == :about_version) { return "v1.0.0"; }
-        if (key == :about_credits) { return "Feito com foco"; }
+        if (key == :about_credits) { return "Made by Emanuel v7k"; }
         if (key == :confirm_stop_title) { return "Parar sessao?"; }
         if (key == :confirm_stop_stop) { return "Parar"; }
         if (key == :confirm_stop_continue) { return "Continuar"; }
