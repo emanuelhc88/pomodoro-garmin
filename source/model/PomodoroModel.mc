@@ -207,7 +207,6 @@ class PomodoroModel {
         }
     }
 
-    (:debug)
     hidden function _debugLog(msg as Lang.String) as Void {
         System.println("[PomodoroModel] " + msg);
     }

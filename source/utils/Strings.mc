@@ -26,7 +26,7 @@ module Strings {
     }
 
     function _en(key as Lang.Symbol) as Lang.String {
-        if (key == :app_name) { return "Toma"; }
+        if (key == :app_name) { return "Toma Pomodoro"; }
         if (key == :preset_cycles) { return "%d cycles"; }
         if (key == :unit_cycles) { return "cycles"; }
         if (key == :preset_custom_label) { return "CUSTOM"; }
@@ -77,7 +77,7 @@ module Strings {
     }
 
     function _pt(key as Lang.Symbol) as Lang.String {
-        if (key == :app_name) { return "Toma"; }
+        if (key == :app_name) { return "Toma Pomodoro"; }
         if (key == :preset_cycles) { return "%d ciclos"; }
         if (key == :unit_cycles) { return "ciclos"; }
         if (key == :preset_custom_label) { return "PERSONALIZADO"; }
