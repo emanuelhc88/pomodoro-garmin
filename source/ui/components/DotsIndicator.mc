@@ -18,15 +18,12 @@ module DotsIndicator {
         for (var i = 0; i < total; i++) {
             var dotX = startX + i * (dotRadius * 2 + dotSpacing);
             if (i == activeIndex) {
-                dc.setColor(Colors.ACCENT, Gfx.COLOR_TRANSPARENT);
+                dc.setColor(Colors.BRAND, Gfx.COLOR_TRANSPARENT);
                 dc.fillCircle(dotX, y, dotRadius);
-            } else if (i == settingsIndex) {
-                dc.setColor(Colors.BORDER, Gfx.COLOR_TRANSPARENT);
+            } else {
+                dc.setColor(Colors.BRAND, Gfx.COLOR_TRANSPARENT);
                 dc.setPenWidth(1);
                 dc.drawCircle(dotX, y, dotRadius);
-            } else {
-                dc.setColor(Colors.BORDER, Gfx.COLOR_TRANSPARENT);
-                dc.fillCircle(dotX, y, dotRadius);
             }
         }
     }
