@@ -97,43 +97,43 @@ module Dimensions {
     function cycleHeadingY(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 20; }
         if (bucket == :large) { return 50; }
-        return 30;
+        return 38;
     }
 
     function cycleNumberY(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 55; }
         if (bucket == :large) { return 130; }
-        return 75;
+        return 72;
     }
 
     function cycleTodayY(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 100; }
         if (bucket == :large) { return 220; }
-        return 130;
+        return 124;
     }
 
     function cycleButton1Y(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 130; }
         if (bucket == :large) { return 280; }
-        return 165;
+        return 152;
     }
 
     function cycleButton2Y(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 160; }
         if (bucket == :large) { return 340; }
-        return 200;
+        return 190;
     }
 
     function buttonWidth(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 130; }
         if (bucket == :large) { return 240; }
-        return 160;
+        return 140;
     }
 
     function buttonHeight(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 26; }
         if (bucket == :large) { return 44; }
-        return 30;
+        return 28;
     }
 
     function customTitleY(bucket as Lang.Symbol) as Lang.Number {

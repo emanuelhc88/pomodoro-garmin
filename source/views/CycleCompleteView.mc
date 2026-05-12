@@ -34,13 +34,13 @@ class CycleCompleteView extends Ui.View {
         var bucket = Bucket.detect();
 
         var headingY = Dimensions.cycleHeadingY(bucket);
-        var headingFont = (bucket == :small) ? Gfx.FONT_SMALL : Gfx.FONT_MEDIUM;
+        var headingFont = (bucket == :large) ? Gfx.FONT_MEDIUM : Gfx.FONT_TINY;
         var headingText = Strings.get(:cycle_complete_title);
         dc.setColor(Colors.ACCENT, Gfx.COLOR_TRANSPARENT);
         dc.drawText(centerX, headingY, headingFont, headingText, Gfx.TEXT_JUSTIFY_CENTER);
 
         var numberY = Dimensions.cycleNumberY(bucket);
-        var numberFont = (bucket == :small) ? Gfx.FONT_NUMBER_MEDIUM : Gfx.FONT_NUMBER_HOT;
+        var numberFont = (bucket == :small) ? Gfx.FONT_NUMBER_MEDIUM : Gfx.FONT_NUMBER_MILD;
         var numberText = Lang.format("$1$ / $2$", [_completedCycles, _totalCycles]);
         dc.setColor(Colors.TEXT_PRIMARY, Gfx.COLOR_TRANSPARENT);
         dc.drawText(centerX, numberY, numberFont, numberText, Gfx.TEXT_JUSTIFY_CENTER);
