@@ -68,7 +68,7 @@ class HomeView extends Ui.View {
             PresetCard.draw(dc, centerX, cardCenterY, _settingsLabel, "", true, false, "", cw, ch, cr, cb, bucket);
         }
 
-        var dotsY = h * 78 / 100;
+        var dotsY = (bucket == :large) ? h * 73 / 100 : h * 78 / 100;
         DotsIndicator.draw(dc, centerX, dotsY, _totalItems, _selectedIndex, dr, ds, 4);
     }
 }

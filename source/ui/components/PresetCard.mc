@@ -27,12 +27,26 @@ module PresetCard {
         dc.drawRoundedRectangle(x, y, cardWidth, cardHeight, cardRadius);
         dc.setPenWidth(1);
 
-        var labelFont = (bucket == :small) ? Gfx.FONT_MEDIUM : Gfx.FONT_NUMBER_MEDIUM;
+        var labelFont;
+        if (bucket == :small) {
+            labelFont = Gfx.FONT_MEDIUM;
+        } else if (bucket == :large) {
+            labelFont = Gfx.FONT_NUMBER_MILD;
+        } else {
+            labelFont = Gfx.FONT_NUMBER_MEDIUM;
+        }
         var sublabelFont = (bucket == :small) ? Gfx.FONT_XTINY : Gfx.FONT_TINY;
         var customLabelFont = Gfx.FONT_XTINY;
 
         if (isCustom) {
-            var customFont = (bucket == :small) ? Gfx.FONT_SMALL : Gfx.FONT_NUMBER_MILD;
+            var customFont;
+            if (bucket == :small) {
+                customFont = Gfx.FONT_SMALL;
+            } else if (bucket == :large) {
+                customFont = Gfx.FONT_LARGE;
+            } else {
+                customFont = Gfx.FONT_NUMBER_MILD;
+            }
             var customLabelH = Gfx.getFontHeight(customLabelFont);
             var labelH = Gfx.getFontHeight(customFont);
             var sublabelH = Gfx.getFontHeight(sublabelFont);

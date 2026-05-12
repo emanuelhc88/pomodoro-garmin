@@ -9,7 +9,7 @@ module Dimensions {
 
     function cardHeight(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 66; }
-        if (bucket == :large) { return 110; }
+        if (bucket == :large) { return 140; }
         return 90;
     }
 
@@ -38,7 +38,7 @@ module Dimensions {
 
     function ringRadius(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 85; }
-        if (bucket == :large) { return 175; }
+        if (bucket == :large) { return 150; }
         return 110;
     }
 
@@ -54,13 +54,13 @@ module Dimensions {
 
     function phaseLabelOffsetY(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return -48; }
-        if (bucket == :large) { return -100; }
+        if (bucket == :large) { return -85; }
         return -70;
     }
 
     function pillsOffsetY(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 75; }
-        if (bucket == :large) { return 160; }
+        if (bucket == :large) { return 100; }
         return 75;
     }
 
@@ -126,13 +126,13 @@ module Dimensions {
 
     function buttonWidth(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 130; }
-        if (bucket == :large) { return 240; }
+        if (bucket == :large) { return 200; }
         return 140;
     }
 
     function buttonHeight(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 26; }
-        if (bucket == :large) { return 44; }
+        if (bucket == :large) { return 38; }
         return 28;
     }
 
