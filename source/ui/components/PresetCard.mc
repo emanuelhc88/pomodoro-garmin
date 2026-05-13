@@ -50,17 +50,19 @@ module PresetCard {
             var customLabelH = Gfx.getFontHeight(customLabelFont);
             var labelH = Gfx.getFontHeight(customFont);
             var sublabelH = Gfx.getFontHeight(sublabelFont);
-            var totalH = customLabelH + labelH + sublabelH - 10;
+            var ov1 = (bucket == :large) ? 8 : 4;
+            var ov2 = (bucket == :large) ? 14 : 8;
+            var totalH = customLabelH + labelH + sublabelH - ov1 - ov2;
             var startY = centerY - totalH / 2;
 
             dc.setColor(Colors.ACCENT, Gfx.COLOR_TRANSPARENT);
             dc.drawText(centerX, startY, customLabelFont, customLabel, Gfx.TEXT_JUSTIFY_CENTER);
 
             dc.setColor(Colors.TEXT_PRIMARY, Gfx.COLOR_TRANSPARENT);
-            dc.drawText(centerX, startY + customLabelH - 4, customFont, label, Gfx.TEXT_JUSTIFY_CENTER);
+            dc.drawText(centerX, startY + customLabelH - ov1, customFont, label, Gfx.TEXT_JUSTIFY_CENTER);
 
             dc.setColor(Colors.TEXT_MUTED, Gfx.COLOR_TRANSPARENT);
-            dc.drawText(centerX, startY + customLabelH + labelH - 8, sublabelFont, sublabel, Gfx.TEXT_JUSTIFY_CENTER);
+            dc.drawText(centerX, startY + customLabelH + labelH - ov1 - ov2, sublabelFont, sublabel, Gfx.TEXT_JUSTIFY_CENTER);
         } else {
             if (sublabel.equals("")) {
                 var soloFont = (bucket == :small) ? Gfx.FONT_MEDIUM : Gfx.FONT_MEDIUM;
@@ -70,14 +72,15 @@ module PresetCard {
             } else {
                 var labelH = Gfx.getFontHeight(labelFont);
                 var sublabelH = Gfx.getFontHeight(sublabelFont);
-                var totalH = labelH + sublabelH - 6;
+                var overlap = (bucket == :large) ? 14 : 6;
+                var totalH = labelH + sublabelH - overlap;
                 var startY = centerY - totalH / 2;
 
                 dc.setColor(Colors.TEXT_PRIMARY, Gfx.COLOR_TRANSPARENT);
                 dc.drawText(centerX, startY, labelFont, label, Gfx.TEXT_JUSTIFY_CENTER);
 
                 dc.setColor(Colors.TEXT_MUTED, Gfx.COLOR_TRANSPARENT);
-                dc.drawText(centerX, startY + labelH - 6, sublabelFont, sublabel, Gfx.TEXT_JUSTIFY_CENTER);
+                dc.drawText(centerX, startY + labelH - overlap, sublabelFont, sublabel, Gfx.TEXT_JUSTIFY_CENTER);
             }
         }
     }

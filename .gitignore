@@ -17,6 +17,7 @@ developer_key.der
 .vscode/.workspaceStorage/
 .idea/
 *.swp
+*.code-workspace
 
 # macOS
 .DS_Store

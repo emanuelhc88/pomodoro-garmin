@@ -130,6 +130,15 @@ https://github.com/emanuelhc88/pomodoro-garmin/blob/main/docs/privacy.md
 Free
 ```
 
+## Version
+
+```
+1.0.0
+```
+
+First public release. Release notes: see [CHANGELOG.md](../CHANGELOG.md).
+Connect IQ reads the version from the upload form, not the manifest.
+
 ## Languages declared
 
 ```

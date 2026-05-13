@@ -3,7 +3,7 @@ using Toybox.Lang;
 module Dimensions {
     function cardWidth(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 150; }
-        if (bucket == :large) { return 260; }
+        if (bucket == :large) { return 300; }
         return 180;
     }
 
@@ -38,7 +38,7 @@ module Dimensions {
 
     function ringRadius(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 85; }
-        if (bucket == :large) { return 150; }
+        if (bucket == :large) { return 190; }
         return 110;
     }
 
@@ -54,13 +54,13 @@ module Dimensions {
 
     function phaseLabelOffsetY(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return -48; }
-        if (bucket == :large) { return -85; }
+        if (bucket == :large) { return -130; }
         return -70;
     }
 
     function pillsOffsetY(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 75; }
-        if (bucket == :large) { return 100; }
+        if (bucket == :large) { return 175; }
         return 75;
     }
 
@@ -96,31 +96,31 @@ module Dimensions {
 
     function cycleHeadingY(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 20; }
-        if (bucket == :large) { return 50; }
+        if (bucket == :large) { return 80; }
         return 38;
     }
 
     function cycleNumberY(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 55; }
-        if (bucket == :large) { return 130; }
+        if (bucket == :large) { return 140; }
         return 72;
     }
 
     function cycleTodayY(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 100; }
-        if (bucket == :large) { return 220; }
+        if (bucket == :large) { return 240; }
         return 124;
     }
 
     function cycleButton1Y(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 130; }
-        if (bucket == :large) { return 280; }
+        if (bucket == :large) { return 290; }
         return 152;
     }
 
     function cycleButton2Y(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 160; }
-        if (bucket == :large) { return 340; }
+        if (bucket == :large) { return 358; }
         return 190;
     }
 
@@ -143,25 +143,25 @@ module Dimensions {
 
     function customLineHeight(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 34; }
-        if (bucket == :large) { return 70; }
+        if (bucket == :large) { return 56; }
         return 40;
     }
 
     function customLine1Y(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 40; }
-        if (bucket == :large) { return 90; }
+        if (bucket == :large) { return 120; }
         return 55;
     }
 
     function customLineSpacing(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 3; }
-        if (bucket == :large) { return 12; }
+        if (bucket == :large) { return 18; }
         return 6;
     }
 
     function customHintsY(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 170; }
-        if (bucket == :large) { return 360; }
+        if (bucket == :large) { return 355; }
         return 195;
     }
 
@@ -239,13 +239,13 @@ module Dimensions {
 
     function confirmDialogHeight(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 110; }
-        if (bucket == :large) { return 180; }
+        if (bucket == :large) { return 210; }
         return 140;
     }
 
     function confirmTitleY(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 15; }
-        if (bucket == :large) { return 30; }
+        if (bucket == :large) { return 25; }
         return 20;
     }
 
@@ -257,25 +257,25 @@ module Dimensions {
 
     function confirmButton1Y(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 50; }
-        if (bucket == :large) { return 85; }
+        if (bucket == :large) { return 80; }
         return 55;
     }
 
     function confirmButton2Y(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 76; }
-        if (bucket == :large) { return 130; }
+        if (bucket == :large) { return 140; }
         return 95;
     }
 
     function confirmButtonWidth(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 120; }
-        if (bucket == :large) { return 210; }
+        if (bucket == :large) { return 200; }
         return 150;
     }
 
     function confirmButtonHeight(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 22; }
-        if (bucket == :large) { return 38; }
+        if (bucket == :large) { return 50; }
         return 32;
     }
 }
