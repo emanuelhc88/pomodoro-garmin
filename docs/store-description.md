@@ -113,7 +113,7 @@ https://github.com/emanuelhc88/pomodoro-garmin
 ## Support email
 
 ```
-(preencher no dashboard)
+emanuel@v7klabs.com.br
 ```
 
 ## Privacy policy URL
