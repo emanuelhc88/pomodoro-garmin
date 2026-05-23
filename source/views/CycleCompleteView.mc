@@ -34,8 +34,8 @@ class CycleCompleteView extends Ui.View {
         var centerX = w / 2;
         var bucket = Bucket.detect();
 
-        var headingY = h * 18 / 100;
-        var headingFont = (bucket == :large) ? Gfx.FONT_MEDIUM : Gfx.FONT_TINY;
+        var headingY = (bucket == :large) ? h * 22 / 100 : h * 18 / 100;
+        var headingFont = (bucket == :large) ? Gfx.FONT_SMALL : Gfx.FONT_TINY;
         var headingText = Strings.get(:cycle_complete_title);
         dc.setColor(Colors.ACCENT, Gfx.COLOR_TRANSPARENT);
         dc.drawText(centerX, headingY, headingFont, headingText, Gfx.TEXT_JUSTIFY_CENTER);
