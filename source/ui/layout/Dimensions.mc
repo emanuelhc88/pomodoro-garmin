@@ -10,7 +10,7 @@ module Dimensions {
     function cardHeight(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 66; }
         if (bucket == :large) { return 140; }
-        return 90;
+        return 105;
     }
 
     function cardRadius(bucket as Lang.Symbol) as Lang.Number {
@@ -38,7 +38,7 @@ module Dimensions {
 
     function ringRadius(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 85; }
-        if (bucket == :large) { return 190; }
+        if (bucket == :large) { return 170; }
         return 110;
     }
 
@@ -60,7 +60,7 @@ module Dimensions {
 
     function pillsOffsetY(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 75; }
-        if (bucket == :large) { return 175; }
+        if (bucket == :large) { return 130; }
         return 75;
     }
 
@@ -126,7 +126,7 @@ module Dimensions {
 
     function buttonWidth(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 130; }
-        if (bucket == :large) { return 200; }
+        if (bucket == :large) { return 280; }
         return 140;
     }
 
@@ -233,7 +233,7 @@ module Dimensions {
 
     function confirmDialogWidth(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 160; }
-        if (bucket == :large) { return 280; }
+        if (bucket == :large) { return 340; }
         return 200;
     }
 
@@ -269,7 +269,7 @@ module Dimensions {
 
     function confirmButtonWidth(bucket as Lang.Symbol) as Lang.Number {
         if (bucket == :small) { return 120; }
-        if (bucket == :large) { return 200; }
+        if (bucket == :large) { return 260; }
         return 150;
     }
 
