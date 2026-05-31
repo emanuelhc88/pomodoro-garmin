@@ -59,7 +59,7 @@ module Dimensions {
     }
 
     function pillsOffsetY(bucket as Lang.Symbol) as Lang.Number {
-        if (bucket == :small) { return 75; }
+        if (bucket == :small) { return 60; }
         if (bucket == :large) { return 130; }
         return 75;
     }
