@@ -47,10 +47,7 @@ class HomeView extends Ui.View {
         var centerX = w / 2;
         var bucket = Bucket.detect();
 
-        var cw = Dimensions.cardWidth(bucket);
-        var ch = Dimensions.cardHeight(bucket);
-        var cr = Dimensions.cardRadius(bucket);
-        var cb = Dimensions.cardBorder(bucket);
+
         var dr = Dimensions.dotRadius(bucket);
         var ds = Dimensions.dotSpacing(bucket);
 
@@ -63,9 +60,19 @@ class HomeView extends Ui.View {
             var preset = _presets[_selectedIndex] as Preset;
             var primary = preset.formatPrimary();
             var secondary = preset.formatSecondary(_cyclesLabel);
-            PresetCard.draw(dc, centerX, cardCenterY, primary, secondary, true, preset.isCustom, _customLabel, cw, ch, cr, cb, bucket);
+            PresetCard.draw(dc, centerX, cardCenterY, true, bucket, {
+                :label => primary,
+                :sublabel => secondary,
+                :isCustom => preset.isCustom,
+                :customLabel => _customLabel
+            });
         } else {
-            PresetCard.draw(dc, centerX, cardCenterY, _settingsLabel, "", true, false, "", cw, ch, cr, cb, bucket);
+            PresetCard.draw(dc, centerX, cardCenterY, true, bucket, {
+                :label => _settingsLabel,
+                :sublabel => "",
+                :isCustom => false,
+                :customLabel => ""
+            });
         }
 
         var dotsY = (bucket == :large) ? h * 73 / 100 : h * 78 / 100;

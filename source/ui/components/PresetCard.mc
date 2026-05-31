@@ -6,17 +6,20 @@ module PresetCard {
         dc as Gfx.Dc,
         centerX as Lang.Number,
         centerY as Lang.Number,
-        label as Lang.String,
-        sublabel as Lang.String,
         isSelected as Lang.Boolean,
-        isCustom as Lang.Boolean,
-        customLabel as Lang.String,
-        cardWidth as Lang.Number,
-        cardHeight as Lang.Number,
-        cardRadius as Lang.Number,
-        cardBorder as Lang.Number,
-        bucket as Lang.Symbol
+        bucket as Lang.Symbol,
+        options as Lang.Dictionary
     ) as Void {
+        var cardWidth = Dimensions.cardWidth(bucket);
+        var cardHeight = Dimensions.cardHeight(bucket);
+        var cardRadius = Dimensions.cardRadius(bucket);
+        var cardBorder = Dimensions.cardBorder(bucket);
+        
+        var label = options.get(:label) as Lang.String;
+        var sublabel = options.get(:sublabel) as Lang.String;
+        var isCustom = options.get(:isCustom) as Lang.Boolean;
+        var customLabel = options.get(:customLabel) as Lang.String;
+
         var x = centerX - cardWidth / 2;
         var y = centerY - cardHeight / 2;
 

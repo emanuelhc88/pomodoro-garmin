@@ -111,9 +111,27 @@ class CustomBuilderView extends Ui.View {
         var line2Y = line1Y + lineH + lineSpacing;
         var line3Y = line2Y + lineH + lineSpacing;
 
-        SpecLine.draw(dc, lineX, line1Y, lineW, lineH, _labelWork, _workMin, _unitMin, _selectedLine == 0 && !_editing, _selectedLine == 0 && _editing, bucket);
-        SpecLine.draw(dc, lineX, line2Y, lineW, lineH, _labelBreak, _breakMin, _unitMin, _selectedLine == 1 && !_editing, _selectedLine == 1 && _editing, bucket);
-        SpecLine.draw(dc, lineX, line3Y, lineW, lineH, _labelCycles, _cycles, "", _selectedLine == 2 && !_editing, _selectedLine == 2 && _editing, bucket);
+        SpecLine.draw(dc, lineX, line1Y, lineW, lineH, bucket, {
+            :label => _labelWork,
+            :value => _workMin,
+            :unit => _unitMin,
+            :isSelected => (_selectedLine == 0 && !_editing),
+            :isEditing => (_selectedLine == 0 && _editing)
+        });
+        SpecLine.draw(dc, lineX, line2Y, lineW, lineH, bucket, {
+            :label => _labelBreak,
+            :value => _breakMin,
+            :unit => _unitMin,
+            :isSelected => (_selectedLine == 1 && !_editing),
+            :isEditing => (_selectedLine == 1 && _editing)
+        });
+        SpecLine.draw(dc, lineX, line3Y, lineW, lineH, bucket, {
+            :label => _labelCycles,
+            :value => _cycles,
+            :unit => "",
+            :isSelected => (_selectedLine == 2 && !_editing),
+            :isEditing => (_selectedLine == 2 && _editing)
+        });
 
         var hintText = _editing ? _hintsEdit : _hintsNav;
         Hints.draw(dc, centerX, hintsY, hintText, bucket);

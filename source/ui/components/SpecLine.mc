@@ -8,13 +8,14 @@ module SpecLine {
         y as Lang.Number,
         w as Lang.Number,
         h as Lang.Number,
-        label as Lang.String,
-        value as Lang.Number,
-        unit as Lang.String,
-        isSelected as Lang.Boolean,
-        isEditing as Lang.Boolean,
-        bucket as Lang.Symbol
+        bucket as Lang.Symbol,
+        options as Lang.Dictionary
     ) as Void {
+        var label = options.get(:label) as Lang.String;
+        var value = options.get(:value) as Lang.Number;
+        var unit = options.get(:unit) as Lang.String;
+        var isSelected = options.get(:isSelected) as Lang.Boolean;
+        var isEditing = options.get(:isEditing) as Lang.Boolean;
         var labelFont = (bucket == :small) ? Gfx.FONT_XTINY : Gfx.FONT_SMALL;
         var valueFont = (bucket == :small) ? Gfx.FONT_SMALL : Gfx.FONT_MEDIUM;
         var unitFont = (bucket == :small) ? Gfx.FONT_XTINY : Gfx.FONT_TINY;
