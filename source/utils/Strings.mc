@@ -56,7 +56,6 @@ module Strings {
         if (key == :settings_sound) { return "Sound"; }
         if (key == :settings_vibration) { return "Vibration"; }
         if (key == :settings_backlight) { return "Backlight on alert"; }
-        if (key == :settings_record_activity) { return "Record as activity"; }
         if (key == :settings_language) { return "Language"; }
         if (key == :settings_history) { return "History"; }
         if (key == :settings_about) { return "About"; }
@@ -107,7 +106,6 @@ module Strings {
         if (key == :settings_sound) { return "Som"; }
         if (key == :settings_vibration) { return "Vibracao"; }
         if (key == :settings_backlight) { return "Iluminacao no alerta"; }
-        if (key == :settings_record_activity) { return "Gravar como atividade"; }
         if (key == :settings_language) { return "Idioma"; }
         if (key == :settings_history) { return "Historico"; }
         if (key == :settings_about) { return "Sobre"; }

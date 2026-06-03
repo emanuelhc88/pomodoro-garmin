@@ -3,7 +3,6 @@
         <property id="soundEnabled" type="boolean">false</property>
         <property id="vibrationEnabled" type="boolean">true</property>
         <property id="backlightOnAlert" type="boolean">true</property>
-        <property id="recordAsActivity" type="boolean">true</property>
         <property id="language" type="string">auto</property>
         <property id="lastSelectedPreset" type="number">0</property>
         <property id="customWorkMin" type="number">25</property>

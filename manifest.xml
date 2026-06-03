@@ -32,9 +32,6 @@
             <iq:product id="venu3s"/>
             <iq:product id="vivoactive5"/>
         </iq:products>
-        <iq:permissions>
-            <iq:uses-permission id="Fit"/>
-        </iq:permissions>
         <iq:languages>
             <iq:language>eng</iq:language>
             <iq:language>por</iq:language>

@@ -28,10 +28,10 @@ First public release on the Connect IQ Store.
 - **Responsive layout** — three screen-size buckets covering 15 devices from
   Forerunner 255S to Venu 3.
 
-### Supported devices (15)
+### Supported devices (27)
 
-Forerunner 255, 255S, 255 Music, 265, 265S, 955, 965 • Fenix 7, 7 Pro,
-8 (43mm), 8 (47mm) • Epix Gen 2 • Venu 3, 3S • Vivoactive 5.
+Forerunner 245, 245 Music, 255, 255S, 255 Music, 265, 265S, 745, 945, 945 LTE, 955, 965 • Fenix 6, 6S, 6 Pro, 6S Pro, 6X Pro, 7, 7 Pro,
+8 (43mm), 8 (47mm) • Epix Gen 2 • Venu 3, 3S • Vivoactive 4, 4S, 5.
 
 ### Permissions
 

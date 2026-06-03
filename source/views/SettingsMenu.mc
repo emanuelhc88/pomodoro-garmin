@@ -30,13 +30,6 @@ class SettingsMenu extends Ui.Menu2 {
             repo.getBacklightOnAlert(),
             null
         ));
-        addItem(new Ui.ToggleMenuItem(
-            Strings.get(:settings_record_activity),
-            null,
-            :recordAsActivity,
-            repo.getRecordAsActivity(),
-            null
-        ));
         addItem(new Ui.MenuItem(
             Strings.get(:settings_language),
             getLanguageSubLabel(repo),
