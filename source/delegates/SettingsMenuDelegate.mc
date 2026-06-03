@@ -20,8 +20,6 @@ class SettingsMenuDelegate extends Ui.Menu2InputDelegate {
                 repo.setVibrationEnabled(toggle.isEnabled());
             } else if (id == :backlightOnAlert) {
                 repo.setBacklightOnAlert(toggle.isEnabled());
-            } else if (id == :recordAsActivity) {
-                repo.setRecordAsActivity(toggle.isEnabled());
             }
             return;
         }

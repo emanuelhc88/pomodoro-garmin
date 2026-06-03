@@ -33,9 +33,9 @@ monkeyc -f monkey.jungle -o bin/app.prg -y developer_key.der --unit-test
 
 > The exact commands depend on SDK installation path. Check `monkey.jungle` for build targets and supported devices.
 
-### Supported Devices (15)
+### Supported Devices (27)
 
-MIP: fr255, fr255s, fr255m, fenix7, fenix7pro, fr955
+MIP: fr245, fr245m, fr255, fr255s, fr255m, fr745, fr945, fr945lte, fr955, fenix6, fenix6s, fenix6pro, fenix6spro, fenix6xpro, fenix7, fenix7pro, vivoactive4, vivoactive4s
 AMOLED: fr265, fr265s, fr965, epix2, vivoactive5, fenix843mm, fenix847mm, venu3, venu3s
 
 ## Architecture

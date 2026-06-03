@@ -29,15 +29,6 @@ class SettingsRepository {
         App.Properties.setValue("backlightOnAlert", value);
     }
 
-    function getRecordAsActivity() as Lang.Boolean {
-        var v = App.Properties.getValue("recordAsActivity");
-        return (v != null) ? (v as Lang.Boolean) : true;
-    }
-
-    function setRecordAsActivity(value as Lang.Boolean) as Void {
-        App.Properties.setValue("recordAsActivity", value);
-    }
-
     function getLanguage() as Lang.String {
         var v = App.Properties.getValue("language");
         return (v != null && v instanceof Lang.String) ? (v as Lang.String) : "auto";
