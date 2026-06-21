@@ -18,7 +18,7 @@ phone required.
 
 Forerunner 255 / 255S / 255 Music, Forerunner 265 / 265S, Forerunner 955,
 Forerunner 965, Fenix 7 / 7 Pro, Fenix 8 (43mm / 47mm), Epix Gen 2,
-Venu 3 / 3S, Vivoactive 5.
+Venu 3 / 3S, Venu 4 (41mm / 45mm), Vivoactive 5.
 
 ## Permissions
 
