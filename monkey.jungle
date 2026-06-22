@@ -4,8 +4,8 @@ base.sourcePath = source;tests
 base.resourcePath = resources;resources-por
 base.excludeAnnotations = test
 
-# Launcher icon sizes: 40 (fr255*, fr955, fenix7*), 56 (vivoactive5),
-# 60 (fr265*, fenix843mm, epix2), 65 (fr965, fenix847mm), 70 (venu3*)
+# Launcher icon sizes: 40 (fr255*, fr955, fenix7*), 54 (venu441mm), 56 (vivoactive5),
+# 60 (fr265*, fenix843mm, epix2), 65 (fr965, fenix847mm, venu445mm), 70 (venu3*)
 
 # MIP no-touch no-speaker — 40x40 icon
 fr745.resourcePath = $(base.resourcePath);resources-icon-40
@@ -86,3 +86,9 @@ venu3.resourcePath = $(base.resourcePath);resources-icon-70
 venu3.excludeAnnotations = $(base.excludeAnnotations);mip;noTouch
 venu3s.resourcePath = $(base.resourcePath);resources-icon-70
 venu3s.excludeAnnotations = $(base.excludeAnnotations);mip;noTouch
+
+# AMOLED has-touch has-speaker — 54x54 icon (venu441mm), 65x65 icon (venu445mm)
+venu441mm.resourcePath = $(base.resourcePath);resources-icon-54
+venu441mm.excludeAnnotations = $(base.excludeAnnotations);mip;noTouch
+venu445mm.resourcePath = $(base.resourcePath);resources-icon-65
+venu445mm.excludeAnnotations = $(base.excludeAnnotations);mip;noTouch
